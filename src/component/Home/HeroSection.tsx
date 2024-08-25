@@ -1,4 +1,4 @@
-import banner from "../../assets/main-banner-1.png";
+import banner from "../../assets/main-banner-2.png";
 import car from "../../assets/car.png";
 import line from "../../assets/line-1.png";
 import "./heroSection.css";
@@ -8,7 +8,7 @@ const HeroSection = () => {
       className=" bg-cover bg-center "
       style={{ backgroundImage: `url(${banner})` }}
     >
-      <div className="px-10 py-28 ">
+      <div className="px-10 py-32 ">
         {/* first part */}
         <div className="flex text-white items-center gap-5 md:gap-10 justify-center lg:justify-normal">
           <h1 className="text-[30px] md:text-[80px] lg:text-[105px] font-unbounded font-semibold  relative flex items-center gap-2">
@@ -42,6 +42,9 @@ const HeroSection = () => {
             for your car
           </p>
         </div>
+        {/* <div className="flex justify-center">
+            <button className="btn btn-warning">Book Service</button>
+        </div> */}
       </div>
     </div>
   );
