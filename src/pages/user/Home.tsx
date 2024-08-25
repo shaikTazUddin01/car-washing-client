@@ -6,6 +6,10 @@ const Home = () => {
         <div>
             {/* hero section */}
             <HeroSection/>
+            {/* home content */}
+            <div className="min-h-screen" >
+
+            </div>
         </div>
     );
 };
