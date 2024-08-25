@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'caveat': ['Caveat', 'cursive'],
+        'dm-sans': ['DM Sans', 'sans-serif'],
+        'unbounded': ['Unbounded', 'sans-serif'],
+      },
+
+    },
   },
   plugins: [require("daisyui")],
 };

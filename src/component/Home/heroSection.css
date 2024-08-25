@@ -1,0 +1,52 @@
+.shine-text{
+    transform: rotate(-7deg);
+    display: inline-block; 
+}
+.shine-line{
+    transform: rotate(7deg);
+        
+}
+@media only screen and (max-width: 768px) {
+    .shine-line{
+        transform: rotate(48deg);
+        width: 70%;
+            
+    }
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .shine-line {
+        transform: rotate(16deg);
+        /* width: 80%; */
+    }
+}
+
+
+.car_moving{
+    transform-origin: 50% 50%;
+    animation: movecar 1s ease-in-out infinite alternate;
+}
+@keyframes movecar {
+    0%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(10px);
+    }
+}
+
+
+
+
+/* Shine Text Animation */
+/* .shine-text {
+    animation: shine 2s ease-in-out infinite alternate;
+}
+
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff9900, 0 0 30px #ff9900;
+    }
+    100% {
+        text-shadow: none;
+    }
+} */
