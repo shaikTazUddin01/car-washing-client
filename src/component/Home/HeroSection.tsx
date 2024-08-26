@@ -2,13 +2,17 @@ import banner from "../../assets/main-banner-2.png";
 import car from "../../assets/car.png";
 import line from "../../assets/line-1.png";
 import "./heroSection.css";
+
 const HeroSection = () => {
+
+
+
   return (
     <div
       className=" bg-cover bg-center "
       style={{ backgroundImage: `url(${banner})` }}
     >
-      <div className="px-10 py-32 ">
+      <div className="px-10 pb-32 pt-40">
         {/* first part */}
         <div className="flex text-white items-center gap-5 md:gap-10 justify-center lg:justify-normal">
           <h1 className="text-[30px] md:text-[80px] lg:text-[105px] font-unbounded font-semibold  relative flex items-center gap-2">
@@ -33,7 +37,7 @@ const HeroSection = () => {
         </div>
         {/* second part */}
         <div className="flex text-white items-center lg:-mt-7 justify-center lg:justify-normal md:flex-col lg:flex-row">
-          <p className=" text-3xl lg:text-2xl font-medium hidden md:inline md:w-[70%] lg:w-[35%] md:text-center lg:text-left">
+          <p className=" text-3xl lg:text-2xl font-medium hidden md:inline md:w-[70%] lg:w-[30%] md:text-center lg:text-left">
             {" "}
             If You went a sparking clean vehicle then out wash is right
             for you

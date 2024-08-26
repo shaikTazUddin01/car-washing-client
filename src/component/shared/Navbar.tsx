@@ -1,4 +1,26 @@
+import { useEffect, useState } from "react";
+import logo from '../../assets/logo.svg'
+
 const Navbar = () => {
+
+
+  const [scroll, setscroll] = useState(false)
+  
+  const handleScroll = () => {
+      const scrollY = window.scrollY;
+      console.log(scrollY)
+      setscroll(scrollY > 1); 
+  };
+
+
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
+
   const item = (
     <>
       <li>
@@ -15,9 +37,10 @@ const Navbar = () => {
       </li>
     </>
   );
+  
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <div className="">
+      <div className={`navbar fixed max-w-[1440px] mx-auto text-white z-50 items-center ${scroll ? "bg-black":"bg-transparent"}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,15 +61,17 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-[16px]"
             >
               {item}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a href="/">
+            <img src={logo} alt="" className="w-[60%]" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 text-[16px]">
            {item}
           </ul>
         </div>
