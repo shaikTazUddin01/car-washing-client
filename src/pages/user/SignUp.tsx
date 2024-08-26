@@ -6,6 +6,8 @@ import bgImg from "../../assets/main-banner-1.png";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
 import { toast, Toaster } from "sonner";
+import { useSignupApiMutation } from "../../redux/auth/authApi";
+import { TResponse } from "../../Types";
 
 
 
@@ -16,41 +18,38 @@ import { toast, Toaster } from "sonner";
 
 const SignUp = () => {
   
-
+const [userSignup]=useSignupApiMutation()
  
 
   // const location = useLocation();
 
   // console.log(login);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    // const toastId = toast.loading("loading..");
-    console.log(data);
-    // try {
+    const toastId = toast.loading("loading..");
+    // console.log(data);
+    try {
      
-    //   // console.log(data);
-    //   // console.log(res);
-
-    // //   if (res?.data) {
-    // //     toast.success("Sign Up  success", {
-    // //       id: toastId,
-    // //       duration: 1500,
-    // //     });
-    //     navigate("/login");
-    //   } else if ("error" in res && isFetchBaseQueryError(res.error)) {
-    //     const errorData = (res.error as FetchBaseQueryError).data;
-    //     if (isErrorResponse(errorData)) {
-    //       toast.error(errorData.message, {
-    //         id: toastId,
-    //         duration: 1500,
-    //       });
-    //     }
-    //   }
-    // } catch (error) {
-    //   toast.error("something is wrong please try again", {
-    //     id: toastId,
-    //     duration: 1500,
-    //   });
-    // }
+      console.log(data);
+      const res=await userSignup(data) as TResponse<any>
+      console.log(res);
+      if (res?.data) {
+        toast.success("Sign Up  success", {
+          id: toastId,
+          duration: 1500,
+        });
+        // navigate("/login");
+      } else{
+        toast.error(res?.error?.data?.message,{
+            id:toastId,
+            duration:1500
+        })
+      }
+    } catch (error) {
+      toast.error("something is wrong please try again", {
+        id: toastId,
+        duration: 1500,
+      });
+    }
   };
   return (
     <div
@@ -74,7 +73,7 @@ const SignUp = () => {
           
           <THInput name="email" type="email" label="Email"></THInput>
           <THInput
-            name="phoneNumber"
+            name="phone"
             type="text"
             label="Phone Number"
           ></THInput>
