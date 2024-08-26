@@ -6,11 +6,17 @@ export const serviceApi = baseApi.injectEndpoints({
 endpoints:(builder)=>({
     getServices:builder.query({
         query:()=>({
-            url:'/',
+            url:'/services',
             method:"GET"
+        })
+    }),
+    getSingleServices:builder.query({
+        query:(id)=>({
+            url:`/services/${id}`,
+            method:"GET",
         })
     })
 })
 })
 
-export const {useGetServicesQuery}=serviceApi
+export const {useGetServicesQuery,useGetSingleServicesQuery}=serviceApi

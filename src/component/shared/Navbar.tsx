@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import logo from '../../assets/logo.svg'
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
-
+const location=useLocation()
 
   const [scroll, setscroll] = useState(false)
   
   const handleScroll = () => {
       const scrollY = window.scrollY;
-      console.log(scrollY)
+      // console.log(scrollY)
       setscroll(scrollY > 1); 
   };
 
@@ -40,7 +41,7 @@ const Navbar = () => {
   
   return (
     <div className="">
-      <div className={`navbar fixed max-w-[1440px] mx-auto text-white z-50 items-center ${scroll ? "bg-black":"bg-transparent"}`}>
+      <div className={`navbar fixed max-w-[1440px] mx-auto text-white z-50 items-center ${scroll || location.pathname !='/' ? "bg-black":"bg-transparent"}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

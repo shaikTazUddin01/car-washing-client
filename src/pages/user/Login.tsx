@@ -9,20 +9,20 @@ import { useLoginApiMutation } from "../../redux/auth/authApi";
 import { TResponse } from "../../Types";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { authInFo } from "../../redux/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login] = useLoginApiMutation();
-  // const location = useLocation();
+  const navigate=useNavigate()
+  
   // dispatch
   const dispatch = useAppDispatch();
-  // const user =useAppSelector((state)=>state.auth)
-  // console.log('user-->',user);
-  // console.log(login);
+ 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading..");
-    // console.log(data);
+    
     try {
-      // console.log(data);
+    
       const res = (await login(data)) as TResponse<any>;
       console.log(res.data.data);
       dispatch(authInFo(res.data.data));
@@ -31,7 +31,7 @@ const Login = () => {
           id: toastId,
           duration: 1500,
         });
-        // navigate("/login");
+        navigate("/");
       } else {
         toast.error(res?.error?.data?.message, {
           id: toastId,
