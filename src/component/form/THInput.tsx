@@ -15,6 +15,7 @@ const THInput = ({ label, name, type, defaultFieldValue }: TInput) => {
         <span className="label-text">{label}</span>
       </label>
       <input
+      
         type={type}
         placeholder={`${label}`}
         className="input input-bordered"

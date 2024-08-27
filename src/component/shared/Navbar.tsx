@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
 import { NavLink, useLocation } from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import userimg from "../../assets/userimg.png";
+import { logOut } from "../../redux/auth/authSlice";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const location = useLocation();
   // get user
   const user = useAppSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
 
   // check scroll or not
   const [scroll, setscroll] = useState(false);
@@ -31,6 +34,13 @@ const Navbar = () => {
   const handleCollapse = () => {
     setCollapse(!collapse);
   };
+
+  const handleLogout = () => {
+    toast.warning("logged out.!");
+    console.log('object');
+    dispatch(logOut());
+  };
+
   const item = (
     <>
       <li>
@@ -59,9 +69,11 @@ const Navbar = () => {
                              rounded-md z-20 ml-8 lg:ml-0 lg:mr-48 absolute
                             text-center shadow-lg shadow-[#858585] w-[250px] "
               >
-                <h1 className='' >Role : {user?.role && user.role}</h1>
-                <h1 className='' >Email : {user?.email && user.email}</h1>
-                <NavLink to={"/admin/dashboard"}>
+                <h1 className="">Role : {user?.role && user.role}</h1>
+                <h1 className="">Email : {user?.email && user.email}</h1>
+
+                {/* navigate dashboard */}
+                <NavLink to={`/${user?.role}/dashboard`}>
                   <li
                     className="bg-[#2b3440]
                                 rounded-md 
@@ -73,6 +85,19 @@ const Navbar = () => {
                     DashBoard
                   </li>
                 </NavLink>
+                {/* handle log out */}
+                <li
+                  className="bg-[#2b3440]
+                                rounded-md 
+                                py-2 px-3 
+                                text-white mt-2
+                                hover:bg-[#082e5f]
+
+                        "
+                  onClick={() => handleLogout()}
+                >
+                  LogOut
+                </li>
                 {/* <li onClick={handleLogOut}
                     className="bg-[#2b3440]
                                 rounded-md 

@@ -1,16 +1,17 @@
-
-import Footer from '../component/shared/Footer';
-import Navbar from '../component/shared/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Toaster } from "sonner";
+import Footer from "../component/shared/Footer";
+import Navbar from "../component/shared/Navbar";
+import { Outlet } from "react-router-dom";
 
 const UserLayOut = () => {
-    return (
-        <div className='max-w-[1440px] mx-auto'>
-            <Navbar></Navbar>
-            <Outlet/>
-            <Footer/>
-        </div>
-    );
+  return (
+    <div className="max-w-[1440px] mx-auto">
+      <Navbar></Navbar>
+      <Outlet />
+      <Footer />
+      <Toaster />
+    </div>
+  );
 };
 
 export default UserLayOut;

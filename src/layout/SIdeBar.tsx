@@ -9,36 +9,34 @@ import { Layout, Menu } from "antd";
 import logo from "../assets/logo.svg";
 import SidebarGenarator from "../utiles/sidebarGenerator";
 import { adminPaths } from "../router/admin.routes";
+import { useAppSelector } from "../redux/hooks/hooks";
 // import { NavLink } from "react-router-dom";
 
 const { Sider } = Layout;
 
-
 const Sidebar = () => {
+  const role = useAppSelector((state) => state.auth.user?.role);
 
-// const role =useAppSelector((state)=>state.adminLoginInfo.user?.role)
+  // crate dynamic path
+  let items = SidebarGenarator(adminPaths, "admin");
+  if (role === "admin") {
+    items = SidebarGenarator(adminPaths, "admin");
+  } else {
+    items = SidebarGenarator(adminPaths, "user");
+  }
 
-let items =SidebarGenarator(adminPaths,'admin');
-// if (role === "Admin") {
-  
-//   items = SidebarGenarator(adminPaths, "admin");
-// }else{
-//   items = SidebarGenarator(subadminPaths, "admin");
-
-// }
   return (
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
       // className="scrollbar"
       style={{
-        height: "100vh", 
+        height: "100vh",
         position: "fixed",
         top: 0,
         left: 0,
         zIndex: 1000,
-        // overflowY: "auto", 
-        
+        // overflowY: "auto",
       }}
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onBreakpoint={(broken) => {
