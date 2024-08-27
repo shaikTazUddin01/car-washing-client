@@ -53,7 +53,7 @@ const [userSignup]=useSignupApiMutation()
   };
   return (
     <div
-      className="flex justify-center items-center min-h-screen bg-cover"
+      className="flex justify-center items-center min-h-screen bg-cover "
       style={{ backgroundImage: `URL(${bgImg})` }}
     >
       <Col
@@ -62,7 +62,7 @@ const [userSignup]=useSignupApiMutation()
         md={{ span: 12 }}
         lg={{ span: 9 }}
         xxl={{ span: 5 }}
-        className="bg-[#ffffff88] rounded-md font-semibold border-primaryColor border-2 my-10 "
+        className="bg-[#ffffff88] rounded-md font-semibold border-primaryColor border-2 my-10 p-5"
       >
         <THForm onSubmit={onSubmit}>
           <h1 className="text-2xl text-center uppercase font-semibold">

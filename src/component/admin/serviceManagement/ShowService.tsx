@@ -76,12 +76,13 @@ const ShowService = () => {
     {
       title: "Service Cast",
       dataIndex: "price",
-      defaultSortOrder: "descend",
+      // defaultSortOrder: "ascend",
       sorter: (a, b) => a.price - b.price,
     },
     {
       title: "Service Duration",
       dataIndex: "duration",
+      sorter: (a, b) => a.price - b.price,
     },
     {
       title: "Action",
@@ -115,6 +116,7 @@ const ShowService = () => {
     <Table
       columns={columns}
       dataSource={data}
+     
       //   onChange={onChange}
       loading={isFetching}
       showSorterTooltip={{ target: "sorter-icon" }}

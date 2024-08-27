@@ -9,8 +9,15 @@ endpoints:(builder)=>({
             url:'/slots/availability',
             method:"GET"
         })
+    }),
+    createSlot:builder.mutation({
+        query:(data)=>({
+            url:'/services/slots',
+            method:"POST",
+            body:data
+        })
     })
 })
 })
 
-export const {useGetAvaliableSlotQuery}=slotApi
+export const {useGetAvaliableSlotQuery,useCreateSlotMutation}=slotApi

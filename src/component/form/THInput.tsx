@@ -1,28 +1,31 @@
-import { useFormContext } from "react-hook-form";
+import { Form, Input } from "antd";
+import { Controller } from "react-hook-form";
 
-type TInput = {
-  label: string;
+type TInputProps = {
   name: string;
   type: string;
-  defaultFieldValue?: string |number;
+  label?: string;
+  defaultFieldValue?:string | number;
 };
 
-const THInput = ({ label, name, type, defaultFieldValue }: TInput) => {
-  const { register } = useFormContext();
+const THInput = ({ type, name, label,defaultFieldValue }:TInputProps) => {
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{label}</span>
-      </label>
-      <input
-      
-        type={type}
-        placeholder={`${label}`}
-        className="input input-bordered"
-        {...register(name)}
+    <div className="">
+     <Form.Item label={label}>
+      <Controller
+        //   control={control}
+        name={name}
         defaultValue={defaultFieldValue}
-        required
+        render={({ field }) => (
+          <Input
+            {...field}
+            type={type}
+            className="rounded-md px-2 py-1"
+            placeholder={`Enter Your ${name}`}
+          />
+        )}
       />
+     </Form.Item>
     </div>
   );
 };

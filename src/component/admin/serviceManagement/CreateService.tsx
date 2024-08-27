@@ -71,7 +71,7 @@ const CreateService = () => {
       <Modal open={isModalOpen} footer={null} onCancel={handleCancel}>
         <div className="pt-10">
           <SectionTitle title="Add Services" />
-          <div className="bg-[#c0bfbf] rounded-xl">
+          <div className="bg-[#c0bfbf] rounded-xl p-5">
             <THForm onSubmit={submit}>
               <THInput name="name" label="Service Name" type="text"></THInput>
               <THInput name="image" label="Service Image" type="text"></THInput>

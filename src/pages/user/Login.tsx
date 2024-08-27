@@ -56,7 +56,7 @@ const Login = () => {
         md={{ span: 12 }}
         lg={{ span: 7 }}
         xxl={{ span: 5 }}
-        className="bg-[#ffffff8b] rounded-md font-semibold border-primaryColor border-2 my-10 "
+        className="bg-[#ffffff8b] rounded-md font-semibold border-primaryColor border-2 my-10 p-5 "
       >
         <THForm onSubmit={onSubmit}>
           <h1 className="text-2xl text-center uppercase font-semibold">

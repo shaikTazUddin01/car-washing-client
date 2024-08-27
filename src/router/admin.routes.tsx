@@ -1,6 +1,7 @@
 import DashboardLayOut from "../layout/DashboardLayOut";
 import Home from "../pages/Dashboard/admin/Home";
 import ServiceManagement from "../pages/Dashboard/admin/ServiceManagement";
+import CreateSlot from "../pages/Dashboard/admin/slaotManagement/CreateSlot";
 
 
 
@@ -19,12 +20,12 @@ export const adminPaths = [
     element:<ServiceManagement/>,
   },
   {
-    name: "Product Management",
+    name: "Slot Management",
     children: [
       {
-        name: "Create Product",
-        path: "create-product",
-        element:<Home/> ,
+        name: "Create Slot",
+        path: "create-slot",
+        element:<CreateSlot/> ,
       },
      
     ],

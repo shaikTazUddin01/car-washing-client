@@ -24,12 +24,14 @@ const UpdateServices = ({ item }: { item: TServices }) => {
 
   //   update service
   const submit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
     const serviceItem = {
       ...data,
       price: Number(data.price),
       duration: Number(data.duration),
     };
 
+    console.log(serviceItem);
     const toastId = toast.loading("loading..");
 
     try {
@@ -66,7 +68,7 @@ const UpdateServices = ({ item }: { item: TServices }) => {
       <Modal open={isModalOpen} footer={null} onCancel={handleCancel}>
         <div className="pt-10">
           <SectionTitle title="Update Services" />
-          <div className="bg-[#c0bfbf] rounded-xl">
+          <div className="bg-[#c0bfbf] rounded-xl p-5">
             <THForm onSubmit={submit}>
               <THInput
                 name="image"

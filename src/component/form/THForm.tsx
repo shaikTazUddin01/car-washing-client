@@ -1,3 +1,4 @@
+import { Form } from "antd";
 import { ReactNode } from "react";
 import {
   FieldValues,
@@ -31,9 +32,7 @@ const THForm = ({ onSubmit, children, defaultValues }: TFormProps) => {
   };
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(submit)} className="p-5">
-        {children}
-      </form>
+      <Form onFinish={methods.handleSubmit(submit)} layout="vertical">{children}</Form>
     </FormProvider>
   );
 };
