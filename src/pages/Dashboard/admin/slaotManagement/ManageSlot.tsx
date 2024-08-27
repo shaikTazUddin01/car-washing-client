@@ -1,5 +1,6 @@
 import { Table, TableColumnsType } from "antd";
 import { useGetAvaliableSlotQuery } from "../../../../redux/slot/slotApi";
+import SectionTitle from "../../../../component/shared/SectionTitle";
 
 interface DataType {
   key: React.Key;
@@ -69,6 +70,9 @@ const ManageSlot = () => {
 
   return (
     <div>
+      <div>
+        <SectionTitle title="Show All Slots"></SectionTitle>
+      </div>
       <Table
         columns={columns}
         dataSource={data}

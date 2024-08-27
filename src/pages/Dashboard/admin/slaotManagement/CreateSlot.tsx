@@ -1,17 +1,15 @@
-import { Button, Col, Modal, Row } from "antd";
-import React, { useState } from "react";
+import { Button, Col, Row } from "antd";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import SectionTitle from "../../../../component/shared/SectionTitle";
 import THForm from "../../../../component/form/THForm";
-import THInput from "../../../../component/form/THInput";
 import THSelect from "../../../../component/form/THSelect";
 import { useGetServicesQuery } from "../../../../redux/services/servicesApi";
 import { TResponse, TServices } from "../../../../Types";
-import THDatePicker from "../../../../component/form/ThDatePicker";
 import THTimepicker from "../../../../component/form/THTimePicker";
 import moment from "moment";
 import { useCreateSlotMutation } from "../../../../redux/slot/slotApi";
 import { toast } from "sonner";
+import THDatePicker from "../../../../component/form/THDatePicker";
 
 const CreateSlot = () => {
  

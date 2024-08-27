@@ -47,8 +47,10 @@ const Sidebar = () => {
       }}
     >
       <div className="demo-logo-vertical ">
-        <div className="flex justify-center items-center mt-4">
+        <div >
+          <a href="/" className="flex justify-center items-center mt-4">
           <img src={logo} alt="" className="w-[80%]" />
+          </a>
         </div>
       </div>
       <Menu

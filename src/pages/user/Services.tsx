@@ -4,8 +4,12 @@ import { TServices } from "../../Types";
 const Services = () => {
     const {data:service,isLoading}=useGetServicesQuery(undefined)
 
-    if (isLoading) {
-        return <p>loading...</p>
+    if (isLoading ) {
+      return(
+        <div className="min-h-screen flex justify-center items-center">
+           <p>loading..</p>
+        </div>
+      );
     }
    const serviceData :TServices=service?.data
   return (
@@ -16,7 +20,7 @@ const Services = () => {
 
         {service?.data?.map(({image,price,name,description,duration,_id}:Partial<TServices>)=>{
         return(
-            <div className="card card-compact bg-base-100 shadow-xl">
+            <div className="card card-compact bg-base-100 shadow-xl" key={_id}>
           <figure>
             <img
               src={image}

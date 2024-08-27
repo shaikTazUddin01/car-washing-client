@@ -11,7 +11,11 @@ const ServiceDetails = () => {
   
 
   if (isLoading ) {
-    return <p>loading..</p>;
+    return(
+      <div className="min-h-screen flex justify-center items-center">
+         <p>loading..</p>
+      </div>
+    );
   }
 
   const { _id, image, name, description, price, duration } = data?.data;
