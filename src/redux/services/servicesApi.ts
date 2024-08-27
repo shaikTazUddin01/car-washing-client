@@ -35,7 +35,7 @@ export const serviceApi = baseApi.injectEndpoints({
       query: (args) => ({
         url: `/services/${args.id}`,
         method: "PUT",
-        body:args.data
+        body:args.serviceItem
       }),
       invalidatesTags: ["services"],
     }),

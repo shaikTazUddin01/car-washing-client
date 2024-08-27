@@ -7,6 +7,7 @@ import {
 import Swal from "sweetalert2";
 import { toast } from "sonner";
 import { TResponse } from "../../../Types";
+import UpdateServices from "./UpdateServices";
 
 interface DataType {
   key: React.Key;
@@ -57,6 +58,18 @@ const ShowService = () => {
 
   const columns: TableColumnsType<DataType> = [
     {
+      title: "Service Image",
+      dataIndex: "image",
+      render:(item)=>{
+        return(
+          <div>
+            <img src={item} alt="" className="h-14 rounded-xl"/>
+          </div>
+        )
+      }
+
+    },
+    {
       title: "Service Name",
       dataIndex: "name",
     },
@@ -76,7 +89,7 @@ const ShowService = () => {
         // console.log(item);
         return (
           <div className="flex gap-5">
-            <button className="btn btn-success btn-sm">Edit</button>
+            <UpdateServices item={item}/>
             <button
               className="btn btn-error btn-sm"
               onClick={() => handleDelete(item?.key)}
@@ -92,6 +105,7 @@ const ShowService = () => {
 
   const data = services?.data?.map((item: any) => ({
     key: item._id,
+    image:item?.image,
     name: item?.name,
     price: item?.price,
     duration: item?.duration,
