@@ -1,6 +1,12 @@
-import {  Table } from "antd";
+import { Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
-import { useGetServicesQuery } from "../../../redux/services/servicesApi";
+import {
+  useDeleteServicesMutation,
+  useGetServicesQuery,
+} from "../../../redux/services/servicesApi";
+import Swal from "sweetalert2";
+import { toast } from "sonner";
+import { TResponse } from "../../../Types";
 
 interface DataType {
   key: React.Key;
@@ -10,13 +16,44 @@ interface DataType {
 }
 
 const ShowService = () => {
-  const { data: services, isLoading ,isFetching} = useGetServicesQuery(undefined);
-
+  const {
+    data: services,
+    isLoading,
+    isFetching,
+  } = useGetServicesQuery(undefined);
+  const [deleteService] = useDeleteServicesMutation();
   if (isLoading) {
     return <p>loading...</p>;
   }
-
-//   console.log(services.data);
+// handle delete
+  const handleDelete =  (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        const toastId = toast.loading("loading...");
+        const res = await deleteService(id) as TResponse<any>;
+        // console.log(res);
+        if (res?.data) {
+          toast.warning("Delete SuccessFully", {
+            id: toastId,
+            duration: 1500,
+          });
+        } else {
+          toast.error(res?.error?.data?.message, {
+            id: toastId,
+            duration: 1500,
+          });
+        }
+      }
+    });
+  };
 
   const columns: TableColumnsType<DataType> = [
     {
@@ -40,7 +77,12 @@ const ShowService = () => {
         return (
           <div className="flex gap-5">
             <button className="btn btn-success btn-sm">Edit</button>
-            <button className="btn btn-error btn-sm">Delete</button>
+            <button
+              className="btn btn-error btn-sm"
+              onClick={() => handleDelete(item?.key)}
+            >
+              Delete
+            </button>
           </div>
         );
       },
