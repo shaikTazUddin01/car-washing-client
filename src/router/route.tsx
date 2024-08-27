@@ -6,35 +6,43 @@ import SignUp from "../pages/user/SignUp";
 import Login from "../pages/user/Login";
 import Services from "../pages/user/Services";
 import ServiceDetails from "../pages/user/ServiceDetails";
+import DashboardLayOut from "../layout/DashboardLayOut";
+import routerGenerator from "../utiles/routerGenerator";
+import { adminPaths } from "./admin.routes";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <UserLayOut />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
         element: <Home />,
       },
       {
-        path:'/services',
-        element:<Services/>
+        path: "/services",
+        element: <Services />,
       },
       {
-        path:'/serviceDetails/:id',
-        element:<ServiceDetails/>
-      }
+        path: "/serviceDetails/:id",
+        element: <ServiceDetails />,
+      },
     ],
   },
   {
-    path:'/login',
-    element:<Login/>
+    path: "/admin",
+    element: <DashboardLayOut />,
+    children: routerGenerator(adminPaths),
   },
   {
-    path:'/signup',
-    element:<SignUp/>
-  }
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
 ]);
 
 export default router;
