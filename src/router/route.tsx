@@ -9,6 +9,8 @@ import ServiceDetails from "../pages/user/ServiceDetails";
 import DashboardLayOut from "../layout/DashboardLayOut";
 import routerGenerator from "../utiles/routerGenerator";
 import { adminPaths } from "./admin.routes";
+import Booking from "../pages/user/Booking";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/serviceDetails/:id",
         element: <ServiceDetails />,
+      },
+      {
+        path: "/booking",
+        element: <ProtectedRoute role="user"><Booking /></ProtectedRoute>,
       },
     ],
   },

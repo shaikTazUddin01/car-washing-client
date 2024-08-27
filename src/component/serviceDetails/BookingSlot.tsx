@@ -25,15 +25,16 @@ const BookingSlot = () => {
     { serviceId: serviceId },
     { skip: !serviceId }
   );
+  console.log('object-->',slotDate);
   // get slot matched by date
   const { data: slotByTime, refetch } = useGetAvaliableSlotQuery(
     { date: slotDate, serviceId: serviceId },
     {
-      skip: !slotDate,
+      skip: !slot,
     }
   );
-// booking slot
-const [bookingSlot]=useCreateBookingMutation()
+  // booking slot
+  const [bookingSlot] = useCreateBookingMutation();
   // modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -44,7 +45,7 @@ const [bookingSlot]=useCreateBookingMutation()
     if (slotDate) {
       refetch();
     }
-  }, [serviceId, slotDate, refetch]);
+  }, [serviceId, slotDate, refetch,dateRefetch]);
 
   if (serviceLoading) {
     return <p>loading</p>;
@@ -58,17 +59,22 @@ const [bookingSlot]=useCreateBookingMutation()
   }));
 
   // date schedul
-  const slotDateOptions = slot?.data?.map((item: any) => ({
-    key: item?._id,
-    label: `${item?.date}`,
-    value: item.date,
+  const uniqueDates: string[] = Array.from(
+    new Set(slot?.data?.map((item: any) => item?.date))
+  );
+  // console.log(uniqueDates);
+  const slotDateOptions = uniqueDates?.map((date: string) => ({
+    key: date,
+    label: date,
+    value: date,
   }));
-
+  // console.log(slotDateOptions);
   // time schedul
-  const slotTimeOptions = slot?.data?.map((item: any) => ({
+  const slotTimeOptions = slotByTime?.data?.map((item: any) => ({
     key: item?._id,
     label: `Start Time : ${item?.startTime} to End Time : ${item?.endTime}`,
     value: item._id,
+    disabled: item?.isBooked === "booked",
   }));
 
   // handle modal open
@@ -81,20 +87,19 @@ const [bookingSlot]=useCreateBookingMutation()
   };
 
   // handle submit
-  const submit: SubmitHandler<FieldValues> = async(data) => {
-    const bookingServiceInfo={
-      service:data?.service,
-      slot:data?.slot
-    }
+  const submit: SubmitHandler<FieldValues> = async (data) => {
+    const bookingServiceInfo = {
+      service: data?.service,
+      slot: data?.slot,
+    };
     const toastId = toast.loading("loading..");
     try {
-      const res = await bookingSlot(bookingServiceInfo) as TResponse<any>;
+      const res = (await bookingSlot(bookingServiceInfo)) as TResponse<any>;
       if (res?.data) {
         toast.success("slot booking", {
           id: toastId,
           duration: 1500,
         });
-        
       } else {
         toast.error(res?.error?.data?.message, {
           id: toastId,
