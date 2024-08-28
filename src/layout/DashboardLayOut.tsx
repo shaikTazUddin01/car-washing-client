@@ -7,26 +7,26 @@ import { toast, Toaster } from "sonner";
 // import { adminInFo } from "../../redux/features/auth/AdminAuthSlice";
 // import userImage from "../assets/userimg.png";
 import Sidebar from "./SIdeBar";
+import { useAppDispatch } from "../redux/hooks/hooks";
+import { logOut } from "../redux/auth/authSlice";
 
 const { Header, Content } = Layout;
 
 const DashboardLayOut: React.FC = () => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 //   const user = useAppSelector((state) => state.adminLoginInfo);
 
   const [openCollapse, SetOpenCollapse] = useState(false);
 
-//   const handleLogout = () => {
-//     toast.warning("our are logged out", {
-//       duration: 1500,
-//     });
-//     dispatch(
-//       adminInFo({
-//         user: null,
-//         token: null,
-//       })
-//     );
-//   };
+  const handleLogout = () => {
+    dispatch(
+      logOut()
+    );
+    toast.warning("our are logged out", {
+      duration: 1500,
+    });
+    
+  };
 
   return (
     <Layout className="min-h-[100%]">
@@ -58,7 +58,7 @@ const DashboardLayOut: React.FC = () => {
                   Logout
                 </Button>
                */}
-               <button className="btn btn-success">logout</button>
+               <button className="btn btn-success btn-sm" onClick={()=>handleLogout()}>logout</button>
             {/* </div> */}
           </div>
         </Header>

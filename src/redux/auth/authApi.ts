@@ -8,6 +8,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags:['auth']
     }),
     LoginApi: builder.mutation({
       query: (data) => ({
@@ -15,8 +16,35 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags:['auth']
+    }),
+    myAccountInFo: builder.query({
+      query: (id) => {
+// console.log('object',id);
+        return({
+          url: `/auth/myAccountInFo/${id}`,
+          method: "GET",
+        })
+      },
+providesTags:['auth']
+    }),
+    updateMyAccountInFo: builder.mutation({
+      query: (args) => {
+        // console.log('---->',args);
+        return ({
+          url: `/auth/myAccountInFo/${args?.id}`,
+          method: "PUT",
+          body: args.data,
+        });
+      },
+      invalidatesTags:['auth']
     }),
   }),
 });
 
-export const { useSignupApiMutation ,useLoginApiMutation} = authApi;
+export const {
+  useSignupApiMutation,
+  useLoginApiMutation,
+  useMyAccountInFoQuery,
+  useUpdateMyAccountInFoMutation,
+} = authApi;

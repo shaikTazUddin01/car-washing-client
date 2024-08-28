@@ -10,6 +10,7 @@ import logo from "../assets/logo.svg";
 import SidebarGenarator from "../utiles/sidebarGenerator";
 import { adminPaths } from "../router/admin.routes";
 import { useAppSelector } from "../redux/hooks/hooks";
+import { userPaths } from "../router/user.routes";
 // import { NavLink } from "react-router-dom";
 
 const { Sider } = Layout;
@@ -18,11 +19,11 @@ const Sidebar = () => {
   const role = useAppSelector((state) => state.auth.user?.role);
 
   // crate dynamic path
-  let items = SidebarGenarator(adminPaths, "admin");
+  let items ;
   if (role === "admin") {
     items = SidebarGenarator(adminPaths, "admin");
   } else {
-    items = SidebarGenarator(adminPaths, "user");
+    items = SidebarGenarator(userPaths, "user");
   }
 
   return (
