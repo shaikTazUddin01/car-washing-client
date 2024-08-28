@@ -25,7 +25,7 @@ const BookingSlot = () => {
     { serviceId: serviceId },
     { skip: !serviceId }
   );
-  console.log('object-->',slotDate);
+  // console.log('object-->',slotDate);
   // get slot matched by date
   const { data: slotByTime, refetch } = useGetAvaliableSlotQuery(
     { date: slotDate, serviceId: serviceId },
@@ -100,6 +100,7 @@ const BookingSlot = () => {
           id: toastId,
           duration: 1500,
         });
+        handleCancel()
       } else {
         toast.error(res?.error?.data?.message, {
           id: toastId,
