@@ -1,33 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGetAvaliableSlotQuery } from "../../redux/slot/slotApi";
 import { Button, Modal } from "antd";
 import SectionTitle from "../shared/SectionTitle";
 import THForm from "../form/THForm";
-import THInput from "../form/THInput";
 import THSelect from "../form/THSelect";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { useGetServicesQuery } from "../../redux/services/servicesApi";
-import { TResponse, TServices } from "../../Types";
+import { TResponse } from "../../Types";
 import THSelectWithWatch from "../form/THSelectWithWatch";
 import { useCreateBookingMutation } from "../../redux/bookingSlot/bookingSlotApi";
 import { toast } from "sonner";
 
-const BookingSlot = () => {
-  const [serviceId, setServiceId] = useState(undefined);
+const BookingSlot = ({service}:{service:any}) => {
+  const [serviceId, setServiceId] = useState(service?._id);
   const [slotDate, setSlotDate] = useState(undefined);
-
-  // get services
-  const { data: services, isLoading: serviceLoading } =
-    useGetServicesQuery(undefined);
+  
+  console.log(service);
 
   // get slot matched by serviceId
-  const { data: slot, refetch: dateRefetch } = useGetAvaliableSlotQuery(
+  const { data: slot,  } = useGetAvaliableSlotQuery(
     { serviceId: serviceId },
-    { skip: !serviceId }
+    
   );
-  // console.log('object-->',slotDate);
+  
   // get slot matched by date
-  const { data: slotByTime, refetch } = useGetAvaliableSlotQuery(
+  const { data: slotByTime } = useGetAvaliableSlotQuery(
     { date: slotDate, serviceId: serviceId },
     {
       skip: !slot,
@@ -37,27 +33,7 @@ const BookingSlot = () => {
   const [bookingSlot] = useCreateBookingMutation();
   // modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (serviceId) {
-      dateRefetch();
-    }
-    if (slotDate) {
-      refetch();
-    }
-  }, [serviceId, slotDate, refetch,dateRefetch]);
-
-  if (serviceLoading) {
-    return <p>loading</p>;
-  }
-
-  // service option
-  const serviceOptions = services.data.map((item: TServices) => ({
-    key: item?._id,
-    label: item.name,
-    value: item._id,
-  }));
-
+  
   // date schedul
   const uniqueDates: string[] = Array.from(
     new Set(slot?.data?.map((item: any) => item?.date))
@@ -89,7 +65,7 @@ const BookingSlot = () => {
   // handle submit
   const submit: SubmitHandler<FieldValues> = async (data) => {
     const bookingServiceInfo = {
-      service: data?.service,
+      service: serviceId,
       slot: data?.slot,
     };
     const toastId = toast.loading("loading..");
@@ -114,8 +90,7 @@ const BookingSlot = () => {
       });
     }
   };
-  // console.log(slot);
-  // console.log(slotByTime);
+  
   return (
     <div>
       <button className="btn btn-success btn-sm" onClick={showModal}>
@@ -127,17 +102,11 @@ const BookingSlot = () => {
           <div className="bg-[#c0bfbf] rounded-xl p-5">
             <THForm onSubmit={submit}>
               <THSelectWithWatch
-                name="service"
-                label="Service"
-                options={serviceOptions}
-                onValueChange={setServiceId}
-              />
-              <THSelectWithWatch
                 name="slotDate"
                 label="Slot Date"
                 options={slotDateOptions}
                 onValueChange={setSlotDate}
-                disabled={!serviceId}
+                // disabled={!serviceId}
               />
               <THSelect
                 name="slot"

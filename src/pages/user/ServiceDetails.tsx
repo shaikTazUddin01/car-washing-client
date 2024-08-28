@@ -36,7 +36,7 @@ const ServiceDetails = () => {
             <h1 className="pt-10 text-xl font-medium">Price: ${price}</h1>
         </div>
       <div>
-        <BookingSlot/>
+        <BookingSlot service={data?.data}/>
       </div>
       </div>
     </div>
