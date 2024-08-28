@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGetAvaliableSlotQuery } from "../../redux/slot/slotApi";
-import { Button, Modal } from "antd";
+import {  Modal } from "antd";
 import SectionTitle from "../shared/SectionTitle";
 import THForm from "../form/THForm";
 import THSelect from "../form/THSelect";
@@ -93,8 +93,8 @@ const BookingSlot = ({service}:{service:any}) => {
   
   return (
     <div>
-      <button className="btn btn-success btn-sm" onClick={showModal}>
-        Book Service
+      <button className="btn btn-neutral btn-sm" onClick={showModal}>
+        Book This Service
       </button>
       <Modal open={isModalOpen} footer={null} onCancel={handleCancel}>
         <div className="pt-10">
@@ -115,9 +115,9 @@ const BookingSlot = ({service}:{service:any}) => {
                 disabled={!slotDate}
               ></THSelect>
 
-              <Button className="w-full mt-3" htmlType="submit" type="primary">
+              <button className="w-full mt-3 btn btn-neutral" type="submit">
                 Booking
-              </Button>
+              </button>
             </THForm>
           </div>
         </div>

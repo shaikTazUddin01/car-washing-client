@@ -8,7 +8,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags:['auth']
+      invalidatesTags: ["auth"],
     }),
     LoginApi: builder.mutation({
       query: (data) => ({
@@ -16,28 +16,49 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags:['auth']
+      invalidatesTags: ["auth"],
     }),
     myAccountInFo: builder.query({
       query: (id) => {
-// console.log('object',id);
-        return({
+        // console.log('object',id);
+        return {
           url: `/auth/myAccountInFo/${id}`,
           method: "GET",
-        })
+        };
       },
-providesTags:['auth']
+      providesTags: ["auth"],
+    }),
+    AllUser: builder.query({
+      query: () => {
+        // console.log('object',id);
+        return {
+          url: "/auth/users",
+          method: "GET",
+        };
+      },
+      providesTags: ["auth"],
     }),
     updateMyAccountInFo: builder.mutation({
       query: (args) => {
         // console.log('---->',args);
-        return ({
+        return {
           url: `/auth/myAccountInFo/${args?.id}`,
           method: "PUT",
           body: args.data,
-        });
+        };
       },
-      invalidatesTags:['auth']
+      invalidatesTags: ["auth"],
+    }),
+    updateUserRole: builder.mutation({
+      query: (args) => {
+        // console.log('---->',args);
+        return {
+          url: `/auth/userRole/${args?.id}`,
+          method: "PUT",
+          body: args.data,
+        };
+      },
+      invalidatesTags: ["auth"],
     }),
   }),
 });
@@ -47,4 +68,6 @@ export const {
   useLoginApiMutation,
   useMyAccountInFoQuery,
   useUpdateMyAccountInFoMutation,
+  useAllUserQuery,
+  useUpdateUserRoleMutation
 } = authApi;

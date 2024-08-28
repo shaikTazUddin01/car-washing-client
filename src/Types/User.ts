@@ -1,4 +1,5 @@
 export type TUser = {
+  key?:string;
   AuthId: string;
   email: string;
   role: string;

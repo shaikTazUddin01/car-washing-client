@@ -113,7 +113,7 @@ const Booking = () => {
             name="time"
             defaultFieldValue={`${slot?.startTime} to ${slot?.endTime}`}
           ></THInput>
-          <button className="w-full btn btn-primary btn-md" type="submit">
+          <button className="w-full btn btn-neutral btn-md" type="submit">
             Pay Now
           </button>
         </THForm>

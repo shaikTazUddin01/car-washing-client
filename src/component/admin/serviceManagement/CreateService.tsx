@@ -66,7 +66,7 @@ const CreateService = () => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+        Add New Service
       </Button>
       <Modal open={isModalOpen} footer={null} onCancel={handleCancel}>
         <div className="pt-10">

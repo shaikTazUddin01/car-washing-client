@@ -64,7 +64,7 @@ const Navbar = () => {
 
             {collapse ? (
               <div
-                className="lg:mt-44 text-white border border-[#FFFFF]
+                className="lg:mt-52 text-white border border-[#FFFFF]
                                  bg-[#2b2b2b] p-4 mt-10 
                              rounded-md z-20 ml-8 lg:ml-0 lg:mr-48 absolute
                             text-center shadow-lg shadow-[#858585] w-[250px] "
