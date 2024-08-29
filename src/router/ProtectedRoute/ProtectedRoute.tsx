@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useAppSelector } from "../../redux/hooks/hooks";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import VerifyToken from "../../utiles/VerifyToken";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { TUser } from "../../Types";
@@ -12,6 +12,7 @@ const ProtectedRoute = ({
   children: ReactNode;
   role: string;
 }) => {
+  const location=useLocation()
   // console.log(auth);
   const token = useAppSelector((state) => state.auth.token);
 
@@ -22,7 +23,7 @@ const ProtectedRoute = ({
   }
 
   if (decoded?.role !==role) {
-    return <Navigate to="/login"></Navigate>;
+    return <Navigate to="/login" state={location?.pathname}></Navigate>;
   }
   return children;
 };

@@ -9,12 +9,13 @@ import { useLoginApiMutation } from "../../redux/auth/authApi";
 import { TResponse } from "../../Types";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { authInFo } from "../../redux/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login] = useLoginApiMutation();
   const navigate=useNavigate()
-  
+  const location=useLocation()
+  console.log(location);
   // dispatch
   const dispatch = useAppDispatch();
  
@@ -31,7 +32,12 @@ const Login = () => {
           id: toastId,
           duration: 1500,
         });
-        navigate("/");
+        if (location?.state) {
+          
+          navigate(location?.state);
+        }else{
+          navigate('/')
+        }
       } else {
         toast.error(res?.error?.data?.message, {
           id: toastId,

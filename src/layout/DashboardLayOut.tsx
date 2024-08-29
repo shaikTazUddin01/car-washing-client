@@ -9,24 +9,45 @@ import { toast, Toaster } from "sonner";
 import Sidebar from "./SIdeBar";
 import { useAppDispatch } from "../redux/hooks/hooks";
 import { logOut } from "../redux/auth/authSlice";
+import { useMyBookingQuery } from "../redux/bookingSlot/bookingSlotApi";
+import Countdown from "../pages/Dashboard/userDeshboard/Countdown";
+import UpcomingBooking from "../pages/Dashboard/userDeshboard/UpcomingBooking";
 
 const { Header, Content } = Layout;
 
 const DashboardLayOut: React.FC = () => {
+  const { data: myBooking, isFetching } = useMyBookingQuery(undefined);
+
   const dispatch = useAppDispatch();
-//   const user = useAppSelector((state) => state.adminLoginInfo);
+  //   const user = useAppSelector((state) => state.adminLoginInfo);
 
   const [openCollapse, SetOpenCollapse] = useState(false);
 
   const handleLogout = () => {
-    dispatch(
-      logOut()
-    );
+    dispatch(logOut());
     toast.warning("our are logged out", {
       duration: 1500,
     });
-    
   };
+
+  // coundown time
+  // get all my booking
+  // current date
+
+  const todayDate = new Date();
+  let upcomingBooking
+
+  if (myBooking?.data) {
+    upcomingBooking = myBooking?.data?.find((item: any) => {
+      const bookingDate = new Date(
+        item?.slot?.date + "T" + item?.slot?.startTime
+      );
+  
+      return bookingDate > todayDate;
+    });
+  }
+
+  console.log(upcomingBooking);
 
   return (
     <Layout className="min-h-[100%]">
@@ -34,32 +55,23 @@ const DashboardLayOut: React.FC = () => {
       <Layout>
         <Header style={{ padding: 0 }}>
           <div className="flex justify-end pt-3 pr-5">
-            {/* <img
-              src={userImage}
-              alt=""
-              className="h-10 cursor-pointer"
-              onClick={() => SetOpenCollapse(!openCollapse)}
-            /> */}
-            {/* {openCollapse == true && (
-              <div className="bg-red-500 min-h-24 min-w-40 absolute top-14 rounded end-0 collapse-container"></div>
-            )} */}
-            {/* <div
-              className={`collapse-container ${
-                openCollapse ? "open " : ""
-              } bg-[#001529] border-2 border-secondaryColor absolute top-14 rounded end-0 text-center flex flex-col text-white px-5 z-20`}
-            > */}
-              
-                {/* <span className="text-[16px]"> {user?.user?.user}</span>
-                <span className="-mt-8 text-[16px] " >Role : {user?.user?.role}</span>
-                <Button
-                  className="items-center btn btn-warning btn-sm -mt-2 mb-5"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Button>
-               */}
-               <button className="btn btn-success btn-sm" onClick={()=>handleLogout()}>logout</button>
-            {/* </div> */}
+            <div className="flex items-center justify-between text-white">
+            {
+              upcomingBooking ?
+              <Countdown
+                date={upcomingBooking?.slot?.date}
+                startTime={upcomingBooking?.slot?.startTime}
+                title="Next Slot"
+              />
+              : " "
+            }
+              {/* <button
+                className="btn btn-success btn-sm"
+                onClick={() => handleLogout()}
+              >
+                logout
+              </button> */}
+            </div>
           </div>
         </Header>
         <Col lg={{ span: 20, offset: 4 }}>
@@ -80,7 +92,5 @@ const DashboardLayOut: React.FC = () => {
     </Layout>
   );
 };
-
-
 
 export default DashboardLayOut;

@@ -19,7 +19,7 @@ const Sidebar = () => {
   const role = useAppSelector((state) => state.auth.user?.role);
 
   // crate dynamic path
-  let items ;
+  let items;
   if (role === "admin") {
     items = SidebarGenarator(adminPaths, "admin");
   } else {
@@ -48,9 +48,9 @@ const Sidebar = () => {
       }}
     >
       <div className="demo-logo-vertical ">
-        <div >
-          <a href="/" className="flex justify-center items-center mt-4">
-          <img src={logo} alt="" className="w-[80%]" />
+        <div>
+          <a href="/" className="flex justify-center items-center my-4">
+            <img src={logo} alt="" className="w-[80%]" />
           </a>
         </div>
       </div>
@@ -65,6 +65,7 @@ const Sidebar = () => {
           // overflowY: "auto", // Ensure the menu itself can scroll
         }}
       />
+      
     </Sider>
   );
 };

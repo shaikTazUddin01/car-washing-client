@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Countdown component
-const Countdown = ({ date, startTime }:any) => {
+const Countdown = ({ date, startTime ,title}:any) => {
   // Function to format time difference
   const getRemainingTime = (date: string, startTime: string) => {
     const bookingStartTime = new Date(`${date}T${startTime}`);
@@ -34,7 +34,7 @@ const Countdown = ({ date, startTime }:any) => {
   }, [date, startTime]);
 
   return (
-    <h1 className="text-xl font-semibold">Remaining Time: {remainingTime}</h1>
+    <h1 className="text-xl font-semibold">{title} : {remainingTime}</h1>
   );
 };
 

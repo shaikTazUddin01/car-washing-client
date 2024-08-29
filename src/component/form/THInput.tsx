@@ -6,6 +6,7 @@ type TInputProps = {
   type: string;
   label?: string;
   defaultFieldValue?:string | number;
+  // disabled?:boolean
 };
 
 const THInput = ({ type, name, label,defaultFieldValue }:TInputProps) => {
@@ -22,6 +23,7 @@ const THInput = ({ type, name, label,defaultFieldValue }:TInputProps) => {
             type={type}
             className="rounded-md px-2 py-1"
             placeholder={`Enter Your ${name}`}
+            // disabled={disabled}
           />
         )}
       />
