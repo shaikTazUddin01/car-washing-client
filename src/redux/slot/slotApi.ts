@@ -20,11 +20,11 @@ export const slotApi = baseApi.injectEndpoints({
     }),
     updateslot: builder.mutation({
       query: (args) => {
-        console.log('---->',args?.isBooked);
+        
         return {
           url: `/slots/updateSlot/${args?.id}`,
           method: "PUT",
-          body:{isBooked:args?.isBooked},
+          body:args?.data,
         };
       },
       invalidatesTags: ["slot"],

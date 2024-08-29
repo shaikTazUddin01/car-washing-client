@@ -45,7 +45,7 @@ export const adminPaths = [
         element: <UserManagement />,
       },
       {
-        name: "Manage Booking",
+        name: "View Booking",
         path: "userBooking",
         element: <UserBooking />,
       },
