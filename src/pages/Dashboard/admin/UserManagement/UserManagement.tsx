@@ -3,13 +3,13 @@ import type { TableColumnsType, TableProps } from "antd";
 import {
   useDeleteServicesMutation,
   useGetServicesQuery,
-} from "../../../redux/services/servicesApi";
+} from "../../../../redux/services/servicesApi";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
-import { TResponse } from "../../../Types";
-import SectionTitle from "../../../component/shared/SectionTitle";
-import { useAllUserQuery } from "../../../redux/auth/authApi";
-import UpdateUserRole from "../../../component/admin/userManagment/UpdateUserRole";
+import { TResponse } from "../../../../Types";
+import SectionTitle from "../../../../component/shared/SectionTitle";
+import { useAllUserQuery } from "../../../../redux/auth/authApi";
+import UpdateUserRole from "../../../../component/admin/userManagment/UpdateUserRole";
 
 interface DataType {
   key: React.Key;
@@ -83,7 +83,15 @@ const UserManagement = () => {
       title: "User Role",
       dataIndex: "role",
       render: (item) => {
-        return <p className={`capitalize font-medium ${item=='admin' ?"text-green-600 ":"text-blue-600"}`}>{item}</p>;
+        return (
+          <p
+            className={`capitalize font-medium ${
+              item == "admin" ? "text-green-600 " : "text-blue-600"
+            }`}
+          >
+            {item}
+          </p>
+        );
       },
     },
     {
@@ -93,7 +101,7 @@ const UserManagement = () => {
         return (
           <div className="flex gap-5">
             {/* <UpdateServices item={item}/> */}
-           <UpdateUserRole item={item}/>
+            <UpdateUserRole item={item} />
           </div>
         );
       },
@@ -111,7 +119,7 @@ const UserManagement = () => {
   }));
 
   return (
-    <div>
+    <div className="min-h-screen">
       <SectionTitle title="User Management"></SectionTitle>
       <Table
         columns={columns}

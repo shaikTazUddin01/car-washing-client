@@ -5,13 +5,15 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import userimg from "../../assets/userimg.png";
 import { logOut } from "../../redux/auth/authSlice";
 import { toast } from "sonner";
+import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
 
 const Navbar = () => {
   const location = useLocation();
   // get user
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
-
+  const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
+console.log(userInfo);
   // check scroll or not
   const [scroll, setscroll] = useState(false);
   // check collapse or not
@@ -56,7 +58,7 @@ const Navbar = () => {
         <div className="pl-2">
           <div className="flex flex-col lg:justify-center lg:items-center px-5 lg:px-0">
             <img
-              src={userimg}
+              src={userInfo?.data?.image}
               alt="img"
               className="w-10 h-10 border rounded-full"
               onClick={() => handleCollapse()}
@@ -69,7 +71,7 @@ const Navbar = () => {
                              rounded-md z-20 ml-8 lg:ml-0 lg:mr-48 absolute
                             text-center shadow-lg shadow-[#858585] w-[250px] "
               >
-                <h1 className="">Role : {user?.role && user.role}</h1>
+                <h1 className="">{userInfo?.data?.name}</h1>
                 <h1 className="">Email : {user?.email && user.email}</h1>
 
                 {/* navigate dashboard */}

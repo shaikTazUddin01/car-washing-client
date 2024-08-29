@@ -1,6 +1,12 @@
-import { Table, TableColumnsType } from "antd";
-import { useGetAvaliableSlotQuery } from "../../../../redux/slot/slotApi";
+import { Select, Table, TableColumnsType } from "antd";
+import {
+  useGetAvaliableSlotQuery,
+  useUpdateslotMutation,
+} from "../../../../redux/slot/slotApi";
 import SectionTitle from "../../../../component/shared/SectionTitle";
+import Swal from "sweetalert2";
+import { TResponse } from "../../../../Types";
+import { toast } from "sonner";
 
 interface DataType {
   key: React.Key;
@@ -10,6 +16,44 @@ interface DataType {
 }
 const ManageSlot = () => {
   const { data: slotData, isFetching } = useGetAvaliableSlotQuery(undefined);
+  const [updateSlotStatus] = useUpdateslotMutation();
+  // update slot status
+  const handleChange = (value: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to update status",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, update it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const toastId = toast.loading("loading..");
+        const splitValue = value.split(" ");
+        //  ------>
+        const statusInFo = {
+          id: splitValue[0],
+          isBooked: splitValue[1],
+        };
+        //  update query call
+        const res = (await updateSlotStatus(statusInFo)) as TResponse<any>;
+        console.log(res);
+        if (res?.data) {
+          toast.success("status updated", {
+            id: toastId,
+            duration: 1500,
+          });
+        } else {
+          toast.error(res?.error?.data?.message, {
+            id: toastId,
+            duration: 1500,
+          });
+        }
+      }
+    });
+  };
+
   const columns: TableColumnsType<DataType> = [
     {
       title: "Service Name",
@@ -30,16 +74,24 @@ const ManageSlot = () => {
     },
     {
       title: "Status",
-      dataIndex: "isBooked",
+      // dataIndex: "isBooked",
       render: (item) => {
-        return (
-          <p
-            className={`uppercase font-medium ${
-              item == "available" ? "text-green-600 " : "text-blue-600"
-            }`}
-          >
-            {item}
+        // console.log("item-->",item);
+        return item === "booked" ? (
+          <p className="text-green-500 font-medium capitalize">
+            {item?.isBooked}
           </p>
+        ) : (
+          <Select
+            defaultValue={item?.isBooked}
+            style={{ width: 120 }}
+            onChange={handleChange}
+            options={[
+              { value: `${item?.key} available`, label: "Available" },
+              // { value: 'booked', label: 'Booked' },
+              { value: `${item?.key} canceled`, label: "Canceled" },
+            ]}
+          />
         );
       },
     },
@@ -71,7 +123,7 @@ const ManageSlot = () => {
   return (
     <div>
       <div>
-        <SectionTitle title="Show All Slots"></SectionTitle>
+        <SectionTitle title="Manage Slots"></SectionTitle>
       </div>
       <Table
         columns={columns}

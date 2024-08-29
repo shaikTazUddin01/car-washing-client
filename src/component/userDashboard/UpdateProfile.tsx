@@ -72,6 +72,12 @@ const UpdateProfile = ({ userinfo }: Record<string, any>) => {
           <div className="bg-[#c0bfbf] rounded-xl p-5">
             <THForm onSubmit={submit}>
               <THInput
+                name="image"
+                label="Image"
+                type="text"
+                defaultFieldValue={userinfo?.image}
+              ></THInput>
+              <THInput
                 name="name"
                 label="Name"
                 type="text"
