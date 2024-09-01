@@ -1,6 +1,6 @@
-import DashboardLayOut from "../layout/DashboardLayOut";
+
 import Dashboard from "../pages/Dashboard/admin/Home";
-import Home from "../pages/Dashboard/admin/Home";
+
 import ServiceManagement from "../pages/Dashboard/admin/ServiceManagement";
 import CreateSlot from "../pages/Dashboard/admin/slaotManagement/CreateSlot";
 import ManageSlot from "../pages/Dashboard/admin/slaotManagement/ManageSlot";

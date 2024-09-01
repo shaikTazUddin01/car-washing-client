@@ -3,7 +3,7 @@ import { useState } from "react";
 import SectionTitle from "../shared/SectionTitle";
 import THForm from "../form/THForm";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { TResponse, TUser } from "../../Types";
+import { TResponse } from "../../Types";
 import THInput from "../form/THInput";
 import { useUpdateMyAccountInFoMutation } from "../../redux/auth/authApi";
 import { toast } from "sonner";

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import userimg from "../../assets/userimg.png";
+// import userimg from "../../assets/userimg.png";
 import { logOut } from "../../redux/auth/authSlice";
 import { toast } from "sonner";
 import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
   const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
-console.log(userInfo);
+// console.log(userInfo);
   // check scroll or not
   const [scroll, setscroll] = useState(false);
   // check collapse or not

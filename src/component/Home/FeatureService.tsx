@@ -9,21 +9,21 @@ const FeatureService = () => {
   if (isLoading) {
       return <p>loading...</p>
   }
- const serviceData :TServices=service?.data
+//  const serviceData : TServices=service?.data
   return (
-    <div className="my-20">
+    <div className=" my-10 md:my-20">
       <div>
         <SectionTitle title="Our Feature Services" />
       </div>
       {/* services */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {service?.data?.slice(0,8)?.map(({image,price,name,description,duration,_id}:Partial<TServices>)=>{
         return(
           <div className="card card-compact bg-base-100 shadow-xl" key={_id}>
           <figure>
             <img
               src={image}
-              alt="Shoes"
+              alt="image"
             />
           </figure>
           <div className="card-body">

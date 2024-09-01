@@ -1,0 +1,6 @@
+.ant-rate-star .ant-rate-star-full{
+    margin: 0;
+}
+:where(.css-dev-only-do-not-override-1c0na6j).ant-rate .ant-rate-star:not(:last-child) {
+    margin-inline-end: 0px !important;
+}

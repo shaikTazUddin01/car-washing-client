@@ -1,12 +1,6 @@
 import { Table } from "antd";
-import type { TableColumnsType, TableProps } from "antd";
-import {
-  useDeleteServicesMutation,
-  useGetServicesQuery,
-} from "../../../../redux/services/servicesApi";
-import Swal from "sweetalert2";
-import { toast } from "sonner";
-import { TResponse } from "../../../../Types";
+import type { TableColumnsType,  } from "antd";
+
 import SectionTitle from "../../../../component/shared/SectionTitle";
 import { useAllUserQuery } from "../../../../redux/auth/authApi";
 import UpdateUserRole from "../../../../component/admin/userManagment/UpdateUserRole";

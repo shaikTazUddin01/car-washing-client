@@ -11,11 +11,11 @@ import { useCreateBookingMutation } from "../../redux/bookingSlot/bookingSlotApi
 import { toast } from "sonner";
 
 const BookingSlot = ({service}:{service:any}) => {
-  const [serviceId, setServiceId] = useState(service?._id);
+  // const [serviceId, setServiceId] = useState(service?._id);
   const [slotDate, setSlotDate] = useState(undefined);
   
-  console.log(service);
-
+  // console.log(service);
+const serviceId=service?._id
   // get slot matched by serviceId
   const { data: slot,  } = useGetAvaliableSlotQuery(
     { serviceId: serviceId },

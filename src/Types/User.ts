@@ -6,3 +6,10 @@ export type TUser = {
   iat: number;
   exp: number;
 };
+
+
+export type TReview={
+  rating:number;
+  comment:string;
+  user:any;
+}

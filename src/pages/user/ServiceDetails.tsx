@@ -1,9 +1,7 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetSingleServicesQuery } from "../../redux/services/servicesApi";
 
 import BookingSlot from "../../component/serviceDetails/BookingSlot";
-import { FaRegClock } from "react-icons/fa";
 import SectionTitle from "../../component/shared/SectionTitle";
 
 const ServiceDetails = () => {
@@ -18,7 +16,7 @@ const ServiceDetails = () => {
     );
   }
 
-  const { _id, image, name, description, price, duration } = data?.data;
+  const { image, name, description, price, duration } = data?.data;
 
   // console.log(serviceDetails);
   return (

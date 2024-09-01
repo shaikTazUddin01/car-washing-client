@@ -12,6 +12,7 @@ import { adminPaths } from "./admin.routes";
 import Booking from "../pages/user/Booking";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { userPaths } from "./user.routes";
+import AllReview from "../pages/user/AllReview";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/booking",
         element: <ProtectedRoute role="user"><Booking /></ProtectedRoute>,
+      },
+      {
+        path: "/allReview",
+        element: <ProtectedRoute role="user"><AllReview/></ProtectedRoute>,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import type { TableColumnsType, TableProps } from "antd";
+import type { TableColumnsType } from "antd";
 import {
   useDeleteServicesMutation,
   useGetServicesQuery,

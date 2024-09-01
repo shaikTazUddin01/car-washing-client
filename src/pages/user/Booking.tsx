@@ -1,16 +1,15 @@
 import  { useEffect, useState } from "react";
 import {
-  useCreateBookingMutation,
   useMyBookingQuery,
 } from "../../redux/bookingSlot/bookingSlotApi";
 import THForm from "../../component/form/THForm";
 import THInput from "../../component/form/THInput";
-import { Col, Row, Tooltip } from "antd";
+
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { TResponse } from "../../Types";
 import { useCreateOrderMutation } from "../../redux/order/orderApi";
-import Swal from "sweetalert2";
+
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
 import THInputAuthFill from "../../component/form/THInputAuthFill";
@@ -35,16 +34,16 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
   });
   
   useEffect(() => {
-    if (!selectedCart) {
-      Swal.fire({
-        title: "Attention Please!",
-        icon: "warning",
-        text: "Before payment select a service Please",
-        // showConfirmButton: false,
-        // timer: 1500
+    // if (!selectedCart) {
+    //   Swal.fire({
+    //     title: "Attention Please!",
+    //     icon: "warning",
+    //     text: "Before payment select a service Please",
+    //     // showConfirmButton: false,
+    //     // timer: 1500
         
-      });
-    }
+    //   });
+    // }
     if (selectedItem) {
       setFormData({
         date: selectedItem?.slot?.date || '',
@@ -104,30 +103,30 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
     }
   };
   return (
-    <div className="pt-32 pb-20 px-20">
+    <div className="pt-32 pb-20 px-5 md:px-20">
       <SectionTitle title="My All Bookings"></SectionTitle>
-      <div className="flex justify-between items-start gap-10 ">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-10 ">
       {/* left side */}
-      <div className="flex flex-col gap-8 w-[50%]">
+      <div className="flex flex-col gap-8 w-full md:w-[50%]">
         {mybooking?.data?.map((item: any) => {
           return (
             <div
               key={item?._id}
               onClick={() => setSelectedCart(item?._id)}
-              className={`border shadow-xl flex p-5 rounded-xl gap-5 ${
+              className={`border shadow-xl flex flex-col lg:flex-row p-5 rounded-xl gap-5 ${
                 selectedCart === item?._id
                   ? "bg-[#0a002b] shadow-2xl shadow-blue-300 text-white"
                   : ""
               }`}
             >
-              <div>
+              <div className="mx-auto lg:mx-0">
                 <img
                   src={item?.service?.image}
                   alt=""
                   className="h-28 w-auto rounded-xl"
                 />
               </div>
-              <div>
+              <div className="text-center lg:text-left">
                 <h1 className="text-xl font-medium">
                   Service Name : {item?.service?.name}
                 </h1>
@@ -143,7 +142,7 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
         })}
       </div>
       {/* right side */}
-      <div className="bg-gray-200 p-5 w-2/5 rounded-2xl">
+      <div className="bg-gray-200 p-5 w-full md:w-2/5 rounded-2xl">
         <THForm onSubmit={submit}>
           <h1 className="text-center text-xl font-medium mb-4 mt-2 font-unbounded">
             Payment Now

@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
+import  { ReactNode } from "react";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { Navigate, useLocation } from "react-router-dom";
-import VerifyToken from "../../utiles/VerifyToken";
+
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { TUser } from "../../Types";
 

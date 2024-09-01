@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaFacebookF, FaLinkedin } from 'react-icons/fa';
 import { MdOutgoingMail } from 'react-icons/md';
 import logo from '../../assets/logo.svg'

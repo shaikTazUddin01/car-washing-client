@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import DiffSection from "../../component/Home/DiffSection";
 import FeatureService from "../../component/Home/FeatureService";
 import HeroSection from "../../component/Home/HeroSection";
-import Review from "../../component/Home/Review";
+// import Review from "../../component/Home/Review";
+import ReviewSection from "../../component/Home/Review";
 
 
 
@@ -18,9 +18,9 @@ const Home = () => {
         <FeatureService />
         {/* diff section */}
         <DiffSection />
-        {/* review */}
-        <Review />
       </div>
+        {/* review */}
+        <ReviewSection />
     </div>
   );
 };

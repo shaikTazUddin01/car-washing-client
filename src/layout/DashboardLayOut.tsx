@@ -1,34 +1,32 @@
-import React, { useState } from "react";
-import { Button, Col, Layout } from "antd";
-// import Sidebar from "./Sidebar";
+
+import {  Col, Layout } from "antd";
+
 import { Outlet } from "react-router-dom";
-import { toast, Toaster } from "sonner";
-// import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-// import { adminInFo } from "../../redux/features/auth/AdminAuthSlice";
-// import userImage from "../assets/userimg.png";
+import {  Toaster } from "sonner";
+
 import Sidebar from "./SIdeBar";
-import { useAppDispatch } from "../redux/hooks/hooks";
-import { logOut } from "../redux/auth/authSlice";
+// import { useAppDispatch } from "../redux/hooks/hooks";
+
 import { useMyBookingQuery } from "../redux/bookingSlot/bookingSlotApi";
 import Countdown from "../pages/Dashboard/userDeshboard/Countdown";
-import UpcomingBooking from "../pages/Dashboard/userDeshboard/UpcomingBooking";
+
 
 const { Header, Content } = Layout;
 
 const DashboardLayOut: React.FC = () => {
-  const { data: myBooking, isFetching } = useMyBookingQuery(undefined);
+  const { data: myBooking } = useMyBookingQuery(undefined);
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   //   const user = useAppSelector((state) => state.adminLoginInfo);
 
-  const [openCollapse, SetOpenCollapse] = useState(false);
+  // const [openCollapse, SetOpenCollapse] = useState(false);
 
-  const handleLogout = () => {
-    dispatch(logOut());
-    toast.warning("our are logged out", {
-      duration: 1500,
-    });
-  };
+  // const handleLogout = () => {
+  //   dispatch(logOut());
+  //   toast.warning("our are logged out", {
+  //     duration: 1500,
+  //   });
+  // };
 
   // coundown time
   // get all my booking

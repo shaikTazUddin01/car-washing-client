@@ -5,7 +5,6 @@ import { TResponse, TUser } from "../../../Types";
 import { Modal } from "antd";
 import SectionTitle from "../../shared/SectionTitle";
 import THForm from "../../form/THForm";
-import THInput from "../../form/THInput";
 import THSelect from "../../form/THSelect";
 import { useUpdateUserRoleMutation } from "../../../redux/auth/authApi";
 

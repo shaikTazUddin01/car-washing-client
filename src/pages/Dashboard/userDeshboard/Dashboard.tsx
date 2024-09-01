@@ -1,4 +1,4 @@
-import user from "../../../assets/userimg.png";
+// import user from "../../../assets/userimg.png";
 import SectionTitle from "../../../component/shared/SectionTitle";
 import UpdateProfile from "../../../component/userDashboard/UpdateProfile";
 import { useMyAccountInFoQuery } from "../../../redux/auth/authApi";

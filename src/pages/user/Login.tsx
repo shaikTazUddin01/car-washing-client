@@ -7,7 +7,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast, Toaster } from "sonner";
 import { useLoginApiMutation } from "../../redux/auth/authApi";
 import { TResponse } from "../../Types";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch } from "../../redux/hooks/hooks";
 import { authInFo } from "../../redux/auth/authSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 

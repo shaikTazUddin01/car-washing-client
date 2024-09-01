@@ -1,12 +1,10 @@
-import { Select, Table, TableColumnsType } from "antd";
+import {  Table, TableColumnsType } from "antd";
 import {
   useGetAvaliableSlotQuery,
-  useUpdateslotMutation,
+  
 } from "../../../../redux/slot/slotApi";
 import SectionTitle from "../../../../component/shared/SectionTitle";
-import Swal from "sweetalert2";
-import { TResponse } from "../../../../Types";
-import { toast } from "sonner";
+
 import UpdateSlotStatus from "../../../../component/admin/slotManagement/UpdateSlotStatus";
 
 interface DataType {

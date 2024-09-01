@@ -1,5 +1,5 @@
 import { Button, Modal } from "antd";
-import React, { useState } from "react";
+import  { useState } from "react";
 import SectionTitle from "../../shared/SectionTitle";
 import THForm from "../../form/THForm";
 import THInput from "../../form/THInput";

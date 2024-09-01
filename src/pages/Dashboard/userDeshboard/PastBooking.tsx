@@ -1,5 +1,5 @@
 import { Table, TableColumnsType } from "antd";
-import { useGetAvaliableSlotQuery } from "../../../redux/slot/slotApi";
+// import { useGetAvaliableSlotQuery } from "../../../redux/slot/slotApi";
 import SectionTitle from "../../../component/shared/SectionTitle";
 import { useMyBookingQuery } from "../../../redux/bookingSlot/bookingSlotApi";
 

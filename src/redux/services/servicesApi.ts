@@ -11,10 +11,14 @@ export const serviceApi = baseApi.injectEndpoints({
       invalidatesTags: ["services"],
     }),
     getServices: builder.query({
-      query: () => ({
-        url: "/services",
-        method: "GET",
-      }),
+      query: (queries) => {
+        console.log('--->>',queries);
+        return {
+          url: "/services",
+          method: "GET",
+          params: queries,
+        };
+      },
       providesTags: ["services"],
     }),
     getSingleServices: builder.query({
@@ -35,7 +39,7 @@ export const serviceApi = baseApi.injectEndpoints({
       query: (args) => ({
         url: `/services/${args.id}`,
         method: "PUT",
-        body:args.serviceItem
+        body: args.serviceItem,
       }),
       invalidatesTags: ["services"],
     }),
@@ -47,5 +51,5 @@ export const {
   useGetSingleServicesQuery,
   useAddServicesMutation,
   useDeleteServicesMutation,
-  useUpdateServicesMutation
+  useUpdateServicesMutation,
 } = serviceApi;

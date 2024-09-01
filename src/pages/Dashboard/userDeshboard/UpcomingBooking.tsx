@@ -1,12 +1,10 @@
-import { Table, TableColumnsType } from "antd";
 import SectionTitle from "../../../component/shared/SectionTitle";
 import { useMyBookingQuery } from "../../../redux/bookingSlot/bookingSlotApi";
-import { useEffect, useState } from "react";
 import Countdown from "./Countdown";
 
 const UpcomingBooking = () => {
   // get all my booking
-  const { data: myBooking, isFetching } = useMyBookingQuery(undefined);
+  const { data: myBooking } = useMyBookingQuery(undefined);
   // current date
 
   console.log(myBooking?.data);
