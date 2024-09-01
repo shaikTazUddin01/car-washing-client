@@ -6,14 +6,16 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { logOut } from "../../redux/auth/authSlice";
 import { toast } from "sonner";
 import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
+import { MdClose } from "react-icons/md";
+import { AiOutlineMenuFold } from "react-icons/ai";
 
 const Navbar = () => {
   const location = useLocation();
   // get user
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
-  const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
-// console.log(userInfo);
+  const { data: userInfo } = useMyAccountInFoQuery(user?.AuthId);
+
   // check scroll or not
   const [scroll, setscroll] = useState(false);
   // check collapse or not
@@ -22,8 +24,8 @@ const Navbar = () => {
   // handle scroll
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    // console.log(scrollY)
-    setscroll(scrollY > 1);
+
+    setscroll(scrollY > 50);
   };
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     toast.warning("logged out.!");
-    console.log('object');
+    console.log("object");
     dispatch(logOut());
   };
 
@@ -100,13 +102,6 @@ const Navbar = () => {
                 >
                   LogOut
                 </li>
-                {/* <li onClick={handleLogOut}
-                    className="bg-[#2b3440]
-                                rounded-md 
-                                py-2 px-3 
-                                text-white mt-2
-                                hover:bg-[#082e5f]
-                        ">Log Out</li> */}
               </div>
             ) : (
               <></>
@@ -118,7 +113,6 @@ const Navbar = () => {
           <li>
             <a href="/login">Login</a>
           </li>
-          {/* <img src={userImg} alt="" className='w-10 h-10 rounded-full'/> */}
         </>
       )}
     </>
@@ -128,44 +122,62 @@ const Navbar = () => {
     <div className="">
       <div
         className={`navbar fixed max-w-[1440px] mx-auto text-white z-50 items-center ${
-          scroll || location.pathname != "/" ? "bg-black" : "bg-transparent"
+          scroll || location.pathname != "/" ? "bg-black" : "lg:bg-transparent "
         }`}
       >
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+          {/* drawer */}
+          <div className="drawer lg:hidden ">
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+              {/* Page content here */}
+              <label htmlFor="my-drawer" className="text-2xl">
+                {/* Open drawer */}
+                <AiOutlineMenuFold />
+              </label>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-[16px]"
-            >
-              {item}
-            </ul>
+            <div className="drawer-side ">
+              <label
+                htmlFor="my-drawer"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+              <div className="menu bg-black text-white min-h-full w-[65%] p-4 relative">
+                {/* Close Button */}
+                <button
+                  onClick={() => {
+                    const drawerCheckbox = document.getElementById(
+                      "my-drawer"
+                    ) as HTMLInputElement;
+                    if (drawerCheckbox) {
+                      drawerCheckbox.checked = false;
+                    }
+                  }}
+                  aria-label="close sidebar"
+                  className="absolute top-4 right-4 text-2xl font-bold"
+                >
+                  <MdClose />
+                </button>
+                {/* Sidebar content here */}
+                <div className="mt-10 mx-auto">
+                  <div className="flex flex-col justify-center items-center text-lg">
+                    {item}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          {/* drawer */}
           <a href="/">
-            <img src={logo} alt="" className="w-[60%]" />
+            <img src={logo} alt="" className="w-[60%] hidden lg:inline" />
           </a>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-[16px]">{item}</ul>
         </div>
-        {/* <div className="navbar-end">
-          
-        </div> */}
+        <div className="navbar-end lg:hidden mr-5">
+          <img src={logo} alt="" className="w-[60%]" />
+        </div>
       </div>
     </div>
   );
