@@ -46,9 +46,11 @@ const HeroSection = () => {
             for your car
           </p>
         </div>
-        {/* <div className="flex justify-center">
-            <button className="btn btn-warning">Book Service</button>
-        </div> */}
+        <div className="flex">
+           <a href="/services">
+           <button className="btn bg-white mt-2 md:mt-0">Book Service</button>
+           </a>
+        </div>
       </div>
     </div>
   );

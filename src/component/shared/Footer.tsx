@@ -23,15 +23,13 @@ const Footer = () => {
               <a className="link link-hover" href="/">
                 Home
               </a>
-              <a className="link link-hover" href="/products">
-                Products
+              <a className="link link-hover" href="/services">
+                Services
               </a>
-              <a className="link link-hover" href="/productManagement">
-                Product Management
+              <a className="link link-hover" href="/booking">
+                Booking
               </a>
-              <a className="link link-hover" href="/about">
-                About Us
-              </a>
+
             </div>
           </nav>
           <nav className="hidden md:flex md:flex-col">

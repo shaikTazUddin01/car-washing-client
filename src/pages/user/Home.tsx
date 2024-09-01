@@ -3,6 +3,7 @@ import FeatureService from "../../component/Home/FeatureService";
 import HeroSection from "../../component/Home/HeroSection";
 // import Review from "../../component/Home/Review";
 import ReviewSection from "../../component/Home/Review";
+import ScrollToTop from "../../component/Home/ScrollToTop";
 
 
 
@@ -21,6 +22,7 @@ const Home = () => {
       </div>
         {/* review */}
         <ReviewSection />
+        <ScrollToTop/>
     </div>
   );
 };

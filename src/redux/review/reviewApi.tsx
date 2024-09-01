@@ -12,7 +12,7 @@ export const reviewApi = baseApi.injectEndpoints({
     }),
     getReview: builder.query({
       query: () => ({
-        url: "/review//allReviews",
+        url: "/review/allReviews",
         method: "GET",
        
       }),

@@ -24,6 +24,11 @@ const DiffSection = () => {
         </div>
         <div className="diff-resizer "></div>
       </div>
+      <div className="flex justify-center md:-mt-10 ">
+        <a href="/services">
+      <button className="btn btn-neutral px-8">Book Service</button>
+        </a>
+      </div>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import { useAppSelector } from "../../redux/hooks/hooks";
 import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
 import THInputAuthFill from "../../component/form/THInputAuthFill";
 import SectionTitle from "../../component/shared/SectionTitle";
+import Swal from "sweetalert2";
 
 const Booking = () => {
   const { data: mybooking, isLoading } = useMyBookingQuery(undefined);
@@ -34,16 +35,16 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
   });
   
   useEffect(() => {
-    // if (!selectedCart) {
-    //   Swal.fire({
-    //     title: "Attention Please!",
-    //     icon: "warning",
-    //     text: "Before payment select a service Please",
-    //     // showConfirmButton: false,
-    //     // timer: 1500
+    if (!selectedCart) {
+      Swal.fire({
+        title: "Attention Please!",
+        icon: "warning",
+        text: "Before payment select a service Please",
+        // showConfirmButton: false,
+        // timer: 1500
         
-    //   });
-    // }
+      });
+    }
     if (selectedItem) {
       setFormData({
         date: selectedItem?.slot?.date || '',

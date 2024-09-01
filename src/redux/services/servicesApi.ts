@@ -12,7 +12,7 @@ export const serviceApi = baseApi.injectEndpoints({
     }),
     getServices: builder.query({
       query: (queries) => {
-        console.log('--->>',queries);
+        // console.log('--->>',queries);
         return {
           url: "/services",
           method: "GET",

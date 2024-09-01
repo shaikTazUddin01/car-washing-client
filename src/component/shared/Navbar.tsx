@@ -68,9 +68,8 @@ const Navbar = () => {
 
             {collapse ? (
               <div
-                className="lg:mt-52 text-white border border-[#FFFFF]
-                                 bg-[#2b2b2b] p-4 mt-10 
-                             rounded-md z-20 ml-8 lg:ml-0 lg:mr-48 absolute
+                className="mt-10 md:-mt-20 lg:mt-52 p-4 end-0 text-white border border-[#FFFFF] bg-[#2b2b2b] 
+                             rounded-md z-20 absolute
                             text-center shadow-lg shadow-[#858585] w-[250px] "
               >
                 <h1 className="">{userInfo?.data?.name}</h1>
@@ -142,7 +141,7 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <div className="menu bg-black text-white min-h-full w-[65%] p-4 relative">
+              <div className="menu bg-black text-white min-h-full w-[65%] md:w-[70%] p-4 relative">
                 {/* Close Button */}
                 <button
                   onClick={() => {

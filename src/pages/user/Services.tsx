@@ -8,7 +8,7 @@ import { Select } from "antd";
 
 const Services = () => {
   const [searchItem, setSearchItem] = useState("");
-  // console.log(searchItem);
+  console.log(searchItem);
   const [sortByPrice, setsortByPrice] = useState("");
   const [filterByPrice, setfilterByPrice] = useState("");
   const { data: service, isLoading } = useGetServicesQuery({
@@ -27,9 +27,12 @@ const Services = () => {
   // const serviceData: TServices = service?.data;
   // search
   const handleSearch: SubmitHandler<FieldValues> = (data) => {
-    
-    // console.log(searchItem);
+    console.log("--->>",data);
     setSearchItem(data?.searchItem);
+  };
+  const handleSearchs: SubmitHandler<FieldValues> = (data) => {
+    console.log("--->>",data);
+    setSearchItem(data?.searchItems);
   };
   // sort
   const handleChange = (value: string) => {
@@ -60,8 +63,8 @@ const Services = () => {
               ]}
             />
           </div>
- {/* search option */}
- <div className="w-full md:col-span-3 lg:col-span-4 hidden lg:inline">
+          {/* search option */}
+          <div className="w-full md:col-span-3 lg:col-span-4 hidden lg:inline">
             <form
               action=""
               className="flex justify-center gap-2"
@@ -95,19 +98,19 @@ const Services = () => {
               ]}
             />
           </div>
-           {/* search option */}
-           <div className="w-full col-span-6 lg:hidden">
+          {/* search option */}
+          <div className="w-full col-span-6 lg:hidden">
             <form
               action=""
               className="flex justify-center gap-2"
-              onClick={handleSubmit(handleSearch)}
+              onClick={handleSubmit(handleSearchs)}
             >
               <div className="form-control w-[80%]">
                 <input
                   type="text"
                   placeholder="Search Here..."
                   className="input input-bordered border-primaryColor"
-                  {...register("searchItem")}
+                  {...register("searchItems")}
                 />
               </div>
               <button type="submit" className="btn btn-neutral px-5 w-[20%]">
@@ -115,7 +118,6 @@ const Services = () => {
               </button>
             </form>
           </div>
-         
         </div>
       </div>
       {service?.data?.length ? (
