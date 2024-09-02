@@ -41,7 +41,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     toast.warning("logged out.!");
-    console.log("object");
+    // console.log("object");
     dispatch(logOut());
   };
 

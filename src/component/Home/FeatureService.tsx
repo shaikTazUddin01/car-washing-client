@@ -36,7 +36,7 @@ const FeatureService = () => {
             <p className="mt-1">{description?.slice(0,100)}...</p>
             <div className="card-actions justify-end">
               <a href={`/serviceDetails/${_id}`}>
-              <button className="btn btn-neutral btn-sm w-full">Details</button>
+              <button className="btn btn-neutral btn-sm w-full ">Details</button>
               </a>
             </div>
           </div>

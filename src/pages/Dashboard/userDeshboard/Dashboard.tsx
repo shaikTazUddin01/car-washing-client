@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <div className="flex justify-center flex-col items-center">
       <SectionTitle title="User Information"></SectionTitle>
-      <div className="running-light-border bg-[#00112f] flex justify-center items-center w-[60%] rounded-2xl py-14 px-8 gap-5">
+      <div className="running-light-border bg-[#00112f] flex flex-col lg:flex-row justify-center items-center w-full md:w-[60%] rounded-2xl py-14 px-8 gap-5">
         <div className="mx-auto ">
         <img src={userInFo?.image} alt="" className="h-44 w-auto rounded-xl" />
         </div>

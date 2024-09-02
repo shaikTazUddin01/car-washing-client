@@ -62,7 +62,7 @@ const CreateSlot = () => {
   return (
     <>
       <Row align={"middle"} justify={"center"}>
-        <Col span={10}>
+      <Col lg={{ span: 10 }} md={{ span: 10 }} sm={{ span: 22 }}>
           <div className="py-8">
             <SectionTitle title="Create Slot" />
             <div className="bg-[#c0bfbf] rounded-xl p-5">

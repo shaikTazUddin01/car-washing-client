@@ -36,19 +36,19 @@ const HeroSection = () => {
           </div>
         </div>
         {/* second part */}
-        <div className="flex text-white items-center lg:-mt-7 justify-center lg:justify-normal md:flex-col lg:flex-row">
+        <div className="flex text-white items-center lg:-mt-7 md:justify-center lg:justify-normal md:flex-col lg:flex-row">
           <p className=" text-3xl lg:text-2xl font-medium hidden md:inline md:w-[70%] lg:w-[30%] md:text-center lg:text-left">
             {" "}
             If You went a sparking clean vehicle then out wash is right
             for you
           </p>
           <p className="text-[40px] md:text-[80px] lg:text-[100px] font-unbounded font-semibold ">
-            for your car
+          for your car
           </p>
         </div>
         <div className="flex">
            <a href="/services">
-           <button className="btn bg-white mt-2 md:mt-0">Book Service</button>
+           <button className="btn bg-white mt-2 md:mt-0 font-unbounded font-medium">Book Service</button>
            </a>
         </div>
       </div>

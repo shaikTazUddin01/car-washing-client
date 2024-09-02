@@ -3,16 +3,19 @@ import cleanCar from "../../assets/clean-car.png";
 import durtyCar from "../../assets/durty-car.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SectionTitle from "../shared/SectionTitle";
 const DiffSection = () => {
   useEffect(() => {
     AOS.init();
   }, []);
   return (
-    <div
-      className="mt-10 w-full"
+    <div className="pt-10">
+      <SectionTitle title="Wash Your Car"></SectionTitle>
+      <div
+      className="w-full"
       data-aos="fade-right"
       // data-aos-anchor="#example-anchor"
-      data-aos-offset="50"
+      data-aos-offset="200"
       data-aos-duration="5000"
     >
       <div className="diff aspect-[16/7] w-full">
@@ -26,9 +29,10 @@ const DiffSection = () => {
       </div>
       <div className="flex justify-center md:-mt-10 ">
         <a href="/services">
-      <button className="btn btn-neutral px-8">Book Service</button>
+      <button className="btn btn-neutral px-8 font-unbounded">Book Service</button>
         </a>
       </div>
+    </div>
     </div>
   );
 };

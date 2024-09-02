@@ -16,8 +16,8 @@ const ReviewSection = () => {
   }
   const Reviews = allReviews?.data;
   const aveReviews =
-    Reviews?.reduce((acc: number, review: TReview) => acc + review?.rating, 0) /
-      Reviews?.length || 0;
+   Number( (Reviews?.reduce((acc: number, review: TReview) => acc + review?.rating, 0) /
+      Reviews?.length || 0).toFixed(2));
 
   // console.log(allReviews);
 
@@ -29,7 +29,7 @@ const ReviewSection = () => {
         <div className="grid  grid-cols-1 lg:grid-cols-5 gap-10 justify-center items-center align-middle pt-5">
           {/* left side */}
           <div className="w-full lg:col-span-2 lg:border-[#696969] lg:border-r-2">
-            <h1 className="text-[170px] font-semibold text-center ">
+            <h1 className="text-[120px] md:text-[170px] font-semibold text-center ">
               {aveReviews}
             </h1>
             <div className="flex justify-center -mt-10 ">
@@ -47,7 +47,7 @@ const ReviewSection = () => {
             </div>
           </div>
           {/* right side */}
-          <div className=" w-full px-5 lg:pr-5 space-y-5 lg:col-span-3">
+          <div className=" w-full px-5 lg:px-8 lg:pr-10 space-y-5 lg:col-span-3">
             {/* card-1 */}
 
             {Reviews?.slice(0, 2)?.map((item: any) => {

@@ -116,6 +116,7 @@ const ShowService = () => {
     <Table
       columns={columns}
       dataSource={data}
+      scroll={{ x: 300 }}
      
       //   onChange={onChange}
       loading={isFetching}

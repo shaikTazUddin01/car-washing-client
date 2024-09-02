@@ -21,13 +21,13 @@ const Booking = () => {
   const [createOrder] = useCreateOrderMutation();
   const [selectedCart, setSelectedCart] = useState(null);
 const user=useAppSelector(state=>state?.auth?.user)
-console.log(user);
+// console.log(user);
 const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
   // useEffect(() => {
    
   // }, [selectedCart]);
   const selectedItem=mybooking?.data?.find((item:any)=>item?._id==selectedCart)
-  console.log(selectedItem);
+  // console.log(selectedItem);
 
   const [formData, setFormData] = useState({
     date: '',

@@ -72,6 +72,7 @@ const data = myBooking?.data?.filter((item: any) => {
         columns={columns}
         dataSource={data}
         //   onChange={onChange}
+        scroll={{ x: 300 }}
         loading={isFetching}
         showSorterTooltip={{ target: "sorter-icon" }}
       />
