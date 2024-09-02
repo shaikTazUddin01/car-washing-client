@@ -1,34 +1,38 @@
-
-import { Rate } from 'antd';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useCreateReviewMutation } from '../../redux/review/reviewApi';
-import { toast } from 'sonner';
-import { TResponse } from '../../Types';
+import { Rate } from "antd";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useCreateReviewMutation } from "../../redux/review/reviewApi";
+import { toast } from "sonner";
+import { TResponse } from "../../Types";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const SubmitReview = () => {
-    const [createReview]=useCreateReviewMutation()
-    const { register,handleSubmit,setValue,reset } = useForm();
+  const [createReview] = useCreateReviewMutation();
+  const { register, handleSubmit, setValue, reset } = useForm();
 
-  const submit: SubmitHandler<FieldValues> = async(data) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  const submit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading..");
-    
+
     try {
-     
-      
-      const res=await createReview(data) as TResponse<any>
+      const res = (await createReview(data)) as TResponse<any>;
       console.log(res);
       if (res?.data) {
         toast.success("Thank you for given your feedback", {
           id: toastId,
           duration: 1500,
         });
-        reset()
+        reset();
         // navigate("/login");
-      } else{
-        toast.error(res?.error?.data?.message,{
-            id:toastId,
-            duration:1500
-        })
+      } else {
+        toast.error(res?.error?.data?.message, {
+          id: toastId,
+          duration: 1500,
+        });
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -37,10 +41,15 @@ const SubmitReview = () => {
       });
     }
   };
-    return (
-        <div className=''>
-            {/* throw review section */}
-      <div className="pt-10 lg:pt-20 w-full">
+  return (
+    <div className="">
+      {/* throw review section */}
+      <div
+        className="pt-10 lg:pt-20 w-full"
+        data-aos="zoom-in"
+        data-aos-duration="800"
+        data-aos-offset="200"
+      >
         <h1 className="text-2xl lg:text-3xl font-unbounded text-center">
           Share Your Thoughts...
         </h1>
@@ -55,15 +64,22 @@ const SubmitReview = () => {
           </div>
           <div className="w-full text-center mt-2">
             <h1 className="font-semibold text-xl">Your orverall rating</h1>
-            <Rate className='text-3xl space-x-2' allowHalf onChange={(value)=>setValue("rating",value)} />
+            <Rate
+              className="text-3xl space-x-2"
+              allowHalf
+defaultValue={5}
+              onChange={(value) => setValue("rating", value)}
+            />
           </div>
           <div className="mx-auto text-center pt-2 lg:pt-5">
-            <button className="btn btn-neutral btn-sm px-5 text-lg">Submit</button>
+            <button className="btn btn-neutral btn-sm px-5 text-lg">
+              Submit
+            </button>
           </div>
         </form>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default SubmitReview;

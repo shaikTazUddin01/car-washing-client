@@ -7,6 +7,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useAddServicesMutation } from "../../../redux/services/servicesApi";
 import { toast } from "sonner";
 import { TResponse } from "../../../Types";
+import THTextArea from "../../form/THTextArea";
 
 const CreateService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,11 +82,12 @@ const CreateService = () => {
                 label="Service Duration"
                 type="text"
               ></THInput>
-              <THInput
+              {/* <THInput
                 name="description"
                 label="Service Description"
                 type="text"
-              ></THInput>
+              ></THInput> */}
+              <THTextArea name="description" label="Service Description"></THTextArea>
               <Button className="w-full mt-3" htmlType="submit" type="primary">
                 Create Service
               </Button>

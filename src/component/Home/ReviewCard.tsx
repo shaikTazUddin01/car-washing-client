@@ -1,9 +1,14 @@
 import { Rate } from "antd";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const ReviewCard = ({item}:{item:any}) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
     return (
-        <div className="flex flex-col lg:flex-row gap-2 justify-center items-center bg-white px-8 py-4 rounded-xl shadow-lg" key={item?._id}>
+        <div className="flex flex-col lg:flex-row gap-2 justify-center items-center bg-white px-8 py-4 rounded-xl shadow-lg" key={item?._id} data-aos="fade-up" data-aos-duration="500" data-aos-offset="100">
         <div className="flex flex-col justify-center items-center">
           <img src={item?.user?.image} alt="" className="size-20  rounded-full" />
           {/* rating */}

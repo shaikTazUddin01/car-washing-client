@@ -6,9 +6,14 @@ import ReviewSection from "../../component/Home/Review";
 import ScrollToTop from "../../component/Home/ScrollToTop";
 
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
-    
+    useEffect(()=>{
+      AOS.init()
+    },[])
   return (
     <div>
       {/* hero section */}
@@ -16,7 +21,9 @@ const Home = () => {
       {/* home content */}
       <div className="px-5">
         {/* feature services */}
+        <div data-aos="fade-up" data-aos-duration="500" data-aos-offset="100">
         <FeatureService />
+        </div>
         {/* diff section */}
         <DiffSection />
       </div>

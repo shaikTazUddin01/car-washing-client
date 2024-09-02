@@ -6,11 +6,19 @@ import ReviewCard from "./ReviewCard";
 import { TReview } from "../../Types";
 import SectionTitle from "../shared/SectionTitle";
 import { useAppSelector } from "../../redux/hooks/hooks";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const ReviewSection = () => {
   const { data: allReviews, isLoading } = useGetReviewQuery(undefined);
   const isUserExists=useAppSelector(state=>state.auth.user)
   
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -29,7 +37,8 @@ const ReviewSection = () => {
         <div className="grid  grid-cols-1 lg:grid-cols-5 gap-10 justify-center items-center align-middle pt-5">
           {/* left side */}
           <div className="w-full lg:col-span-2 lg:border-[#696969] lg:border-r-2">
-            <h1 className="text-[120px] md:text-[170px] font-semibold text-center ">
+            <div data-aos="fade-up" data-aos-duration="500" data-aos-offset="100">
+            <h1 className="text-[120px] md:text-[170px] font-semibold text-center " >
               {aveReviews}
             </h1>
             <div className="flex justify-center -mt-10 ">
@@ -45,6 +54,7 @@ const ReviewSection = () => {
                 />
               </div>
             </div>
+            </div>
           </div>
           {/* right side */}
           <div className=" w-full px-5 lg:px-8 lg:pr-10 space-y-5 lg:col-span-3">
@@ -53,7 +63,7 @@ const ReviewSection = () => {
             {Reviews?.slice(0, 2)?.map((item: any) => {
               return <ReviewCard item={item} key={item?._id} />;
             })}
-            <div className="text-center">
+            <div className="text-center" data-aos="fade-up"  data-aos-offset="20">
               <a href="/allReview">
                 <button className="btn btn-neutral btn-sm">
                   See All Review..

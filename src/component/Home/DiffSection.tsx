@@ -14,9 +14,8 @@ const DiffSection = () => {
       <div
         className="w-full"
         data-aos="fade-right"
-        // data-aos-anchor="#example-anchor"
         data-aos-offset="200"
-        data-aos-duration="5000"
+        data-aos-duration="1000"
       >
         <div className="diff aspect-[16/7] w-full">
           <div className="diff-item-1">
