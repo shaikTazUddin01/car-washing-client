@@ -15,6 +15,7 @@ import { useMyAccountInFoQuery } from "../../redux/auth/authApi";
 import THInputAuthFill from "../../component/form/THInputAuthFill";
 import SectionTitle from "../../component/shared/SectionTitle";
 import Swal from "sweetalert2";
+import { FaCheckCircle } from "react-icons/fa";
 
 const Booking = () => {
   const { data: mybooking, isLoading } = useMyBookingQuery(undefined);
@@ -33,6 +34,7 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
     date: '',
     time: '',
   });
+  // console.log(mybooking);
   
   useEffect(() => {
     if (!selectedCart) {
@@ -62,7 +64,7 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
       </div>
     );
   }
- 
+ console.log(selectedItem);
   // handle order
   const submit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading..");
@@ -77,6 +79,7 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
       service: selectedItem?.service?._id,
       slot: selectedItem?.slot?._id,
       paymentAmount: selectedItem?.service?.price,
+      bookingId:selectedItem?._id,
     };
 
     // console.log(orderInFo);
@@ -108,40 +111,52 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
       <SectionTitle title="My All Bookings"></SectionTitle>
       <div className="flex flex-col md:flex-row justify-between items-start gap-10 ">
       {/* left side */}
+     {mybooking?.data?.length ?  
       <div className="flex flex-col gap-8 w-full md:w-[50%]">
-        {mybooking?.data?.map((item: any) => {
-          return (
-            <div
-              key={item?._id}
-              onClick={() => setSelectedCart(item?._id)}
-              className={`border shadow-xl flex flex-col lg:flex-row p-5 rounded-xl gap-5 ${
-                selectedCart === item?._id
-                  ? "bg-[#0a002b] shadow-2xl shadow-blue-300 text-white"
-                  : ""
-              }`}
-            >
-              <div className="mx-auto lg:mx-0">
-                <img
-                  src={item?.service?.image}
-                  alt=""
-                  className="h-28 w-auto rounded-xl"
-                />
-              </div>
-              <div className="text-center lg:text-left">
-                <h1 className="text-xl font-medium">
-                  Service Name : {item?.service?.name}
-                </h1>
-                <p>Date : {item?.slot?.date}</p>
-                <p>
-                  Slot Time : {item?.slot?.startTime} to {item?.slot?.endTime}
-                </p>
-                <p>Amount : {item?.service?.price}৳ </p>
-                {/* <button className="btn btn-neutral btn-sm">Select Now</button> */}
-              </div>
+      {mybooking?.data?.map((item: any) => {
+        return (
+          <div
+            key={item?._id}
+            onClick={() => item?.paymentStatus==="pending" && setSelectedCart(item?._id)}
+            className={`border shadow-xl flex flex-col lg:flex-row p-5 rounded-xl gap-5 ${
+              selectedCart === item?._id
+                ? "bg-[#0a002b] shadow-2xl shadow-blue-300 text-white"
+                : ""
+            }${item?.paymentStatus==="paid" ? "cursor-not-allowed" : "cursor-pointer"}`} 
+          >
+            <div className="mx-auto lg:mx-0">
+              <img
+                src={item?.service?.image}
+                alt=""
+                className="h-28 w-auto rounded-xl"
+              />
             </div>
-          );
-        })}
-      </div>
+            <div className="text-center lg:text-left">
+              <h1 className="text-xl font-medium">
+                Service Name : {item?.service?.name}
+              </h1>
+              <p>Date : {item?.slot?.date}</p>
+              <p>
+                Slot Time : {item?.slot?.startTime} to {item?.slot?.endTime}
+              </p>
+              <p>Amount : {item?.service?.price}৳ </p>
+              {/* <button className="btn btn-neutral btn-sm">Select Now</button> */}
+              {
+                item?.paymentStatus==="paid"&&
+                <div className="flex items-center gap-1">
+                  <FaCheckCircle className="text-green-500"/> <span>Booked</span>
+                </div>
+              }
+            </div>
+          </div>
+        );
+      })}
+    </div>
+    :
+    <div className="text-3xl font-medium text-center">
+      <p>No Slot is add to booking..!</p>
+    </div>
+    }
       {/* right side */}
       <div className="bg-gray-200 p-5 w-full md:w-2/5 rounded-2xl">
         <THForm onSubmit={submit}>

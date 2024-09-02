@@ -2,30 +2,25 @@ import  { ReactNode } from "react";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { Navigate, useLocation } from "react-router-dom";
 
-import { jwtDecode, JwtPayload } from "jwt-decode";
-import { TUser } from "../../Types";
-
-const ProtectedRoute = ({
+const PRouter = ({
   children,
-  role,
+
 }: {
   children: ReactNode;
-  role: string|null;
+  
 }) => {
   const location=useLocation()
   // console.log(auth);
   const token = useAppSelector((state) => state.auth.token);
 
-  let decoded ;
 
-  if (token) {
-    decoded  = jwtDecode<JwtPayload>(token) as TUser;
-  }
-
-  if (decoded?.role !==role) {
+  if (!token) {
     return <Navigate to="/login" state={location?.pathname}></Navigate>;
+
   }
+
+  
   return children;
 };
 
-export default ProtectedRoute;
+export default PRouter;

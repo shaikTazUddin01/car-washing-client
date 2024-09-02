@@ -12,27 +12,29 @@ const DiffSection = () => {
     <div className="pt-10">
       <SectionTitle title="Wash Your Car"></SectionTitle>
       <div
-      className="w-full"
-      data-aos="fade-right"
-      // data-aos-anchor="#example-anchor"
-      data-aos-offset="200"
-      data-aos-duration="5000"
-    >
-      <div className="diff aspect-[16/7] w-full">
-        <div className="diff-item-1">
-          <img src={cleanCar} alt="" className="h-auto" />
+        className="w-full"
+        data-aos="fade-right"
+        // data-aos-anchor="#example-anchor"
+        data-aos-offset="200"
+        data-aos-duration="5000"
+      >
+        <div className="diff aspect-[16/7] w-full">
+          <div className="diff-item-1">
+            <img src={cleanCar} alt="" className="h-auto" />
+          </div>
+          <div className="diff-item-2">
+            <img src={durtyCar} alt="" className="h-auto" />
+          </div>
+          <div className="diff-resizer "></div>
         </div>
-        <div className="diff-item-2">
-          <img src={durtyCar} alt="" className="h-auto" />
+        <div className="flex justify-center  ">
+          <a href="/services">
+            <button className="btn btn-neutral px-8 font-unbounded">
+              Book Service
+            </button>
+          </a>
         </div>
-        <div className="diff-resizer "></div>
       </div>
-      <div className="flex justify-center md:-mt-10 ">
-        <a href="/services">
-      <button className="btn btn-neutral px-8 font-unbounded">Book Service</button>
-        </a>
-      </div>
-    </div>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import Booking from "../pages/user/Booking";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { userPaths } from "./user.routes";
 import AllReview from "../pages/user/AllReview";
+import PRouter from "./ProtectedRoute/PRouter";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/booking",
-        element: <ProtectedRoute role="user"><Booking /></ProtectedRoute>,
+        element: <PRouter><Booking /></PRouter>,
       },
       {
         path: "/allReview",

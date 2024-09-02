@@ -8,11 +8,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast, Toaster } from "sonner";
 import { useSignupApiMutation } from "../../redux/auth/authApi";
 import { TResponse } from "../../Types";
-
-
-
-
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -20,6 +16,7 @@ const SignUp = () => {
   
 const [userSignup]=useSignupApiMutation()
  
+const navigate=useNavigate()
 
   // const location = useLocation();
 
@@ -31,13 +28,13 @@ const [userSignup]=useSignupApiMutation()
      
       console.log(data);
       const res=await userSignup(data) as TResponse<any>
-      console.log(res);
+      // console.log(res);
       if (res?.data) {
         toast.success("Sign Up  success", {
           id: toastId,
           duration: 1500,
         });
-        // navigate("/login");
+        navigate("/login");
       } else{
         toast.error(res?.error?.data?.message,{
             id:toastId,
