@@ -49,6 +49,16 @@ const Footer = () => {
               </a>
             </div>
           </nav>
+          {/* contact */}
+          <nav className="hidden lg:flex md:flex-col pt-5">
+            <div>
+              <h1 className="footer-title">Contact</h1>
+            </div>
+            <div className="grid grid-flow-row gap-2 text-[16px]">
+             <p> Number : +88 018956 57678</p>
+             <p>Mollahpara Amtola,Khulna</p>
+            </div>
+          </nav>
         </footer>
       );
 };

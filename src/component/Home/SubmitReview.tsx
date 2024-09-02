@@ -46,8 +46,8 @@ const SubmitReview = () => {
       {/* throw review section */}
       <div
         className="pt-10 lg:pt-20 w-full"
-        data-aos="zoom-in"
-        data-aos-duration="800"
+        data-aos="fade-up"
+        data-aos-duration="500"
         data-aos-offset="200"
       >
         <h1 className="text-2xl lg:text-3xl font-unbounded text-center">

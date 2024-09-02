@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 
@@ -26,9 +27,9 @@ const goTop=()=>{
 
     return (
         <div className={`${showButton ? 'visible' : 'hidden'} `}>
-            <button className='rounded-xl bg-[#19083d] p-2 fixed bottom-10 right-5 text-white border border-black text-3xl z-50' onClick={goTop}>
-            <MdKeyboardDoubleArrowUp></MdKeyboardDoubleArrowUp>
-                {/* top */}
+            <button className='rounded-xl bg-[#19083d] px-3 py-2 fixed bottom-10 right-5 text-white border border-black text-xl z-50 ' onClick={goTop}>
+           <FaArrowUp/>
+               
             </button>
         </div>
     );
