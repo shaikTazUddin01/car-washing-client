@@ -20,7 +20,7 @@ const ServiceDetails = () => {
 
   // console.log(serviceDetails);
   return (
-    <div className="min-h-screen pb-20 pt-28 px-10  ">
+    <div className="min-h-screen pb-20 pt-28 px-10  max-w-[1440px] mx-auto">
       <SectionTitle title="Service Details"></SectionTitle>
       <div className="grid grid-cols-2 items-center gap-10 bg-gray-200 p-10 rounded-2xl">
         <div>

@@ -43,7 +43,7 @@ const Services = () => {
     setfilterByPrice(value);
   };
   return (
-    <div className="min-h-screen pt-28 pb-28 px-5">
+    <div className="min-h-screen pt-28 pb-28 px-5 max-w-[1440px] mx-auto">
       {/* --- */}
       <div className="w-full p-5 bg-black mb-10 rounded-xl">
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 items-center align-middle lg:justify-around gap-2">

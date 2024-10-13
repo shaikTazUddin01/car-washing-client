@@ -30,8 +30,8 @@ const ReviewSection = () => {
   // console.log(allReviews);
 
   return (
-    <div className="relative">
-      <div className="py-12 mt-20 bg-gray-100">
+    <div className="relative bg-gray-100">
+      <div className="py-12 mt-20 max-w-[1440px] mx-auto">
         <SectionTitle title="OverAll Review" />
         {/* review section */}
         <div className="grid  grid-cols-1 lg:grid-cols-5 gap-10 justify-center items-center align-middle pt-5">

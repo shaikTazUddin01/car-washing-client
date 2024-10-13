@@ -118,12 +118,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className="">
-      <div
-        className={`navbar fixed max-w-[1440px] mx-auto text-white z-50 items-center ${
+    <div
+        className={` fixed w-full text-white z-50 items-center ${
           scroll || location.pathname != "/" ? "bg-black" : "lg:bg-transparent "
         }`}
       >
+          <div className="navbar max-w-[1440px] mx-auto">
+
+
         <div className="navbar-start">
           {/* drawer */}
           <div className="drawer lg:hidden ">
@@ -172,11 +174,14 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-[16px]">{item}</ul>
+          <ul className="menu menu-horizontal px-1 text-[17px]">{item}</ul>
         </div>
         <div className="navbar-end lg:hidden mr-5">
           <img src={logo} alt="" className="w-[60%]" />
         </div>
+
+
+
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 
-import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 
 
 const ScrollToTop = () => {

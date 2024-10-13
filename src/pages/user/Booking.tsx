@@ -107,7 +107,7 @@ const {data:userInfo}=useMyAccountInFoQuery(user?.AuthId)
     }
   };
   return (
-    <div className="pt-32 pb-20 px-5 md:px-20">
+    <div className="pt-32 pb-20 px-5 md:px-20 max-w-[1440px] mx-auto">
       <SectionTitle title="My All Bookings"></SectionTitle>
       <div className="flex flex-col md:flex-row justify-between items-start gap-10 ">
       {/* left side */}

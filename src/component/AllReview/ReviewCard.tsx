@@ -5,7 +5,7 @@ const ReviewCard = ({item}:{item:any}) => {
     return (
         <div className="flex flex-col gap-2 justify-center items-center bg-white px-10 py-7 rounded-xl" key={item?._id}>
         <div className="flex flex-col justify-center items-center">
-          <img src={item?.user?.image} alt="" className="size-20  rounded-full" />
+          <img src={item?.user?.image} alt="" className="size-32 lg:size-20  rounded-full" />
           {/* rating */}
           <div className="flex items-center flex-row justify-center gap-2">
             <h1 className="font-semibold text-xl">{item?.rating}/5</h1>

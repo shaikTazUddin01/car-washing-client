@@ -1,11 +1,12 @@
 import { FaFacebookF, FaLinkedin } from 'react-icons/fa';
 import { MdOutgoingMail } from 'react-icons/md';
 import logo from '../../assets/logo.svg'
-import bg from '../../assets/main-banner-1.png'
+import bg from '../../assets/main-banner-2.png'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 text-white flex justify-around items-center" style={{backgroundImage:`url(${bg})`}}>
+      <div style={{backgroundImage:`url(${bg})`}}>
+        <footer className="footer p-10 text-white flex justify-around items-center max-w-7xl mx-auto" >
           <aside className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-center">
               <img src={logo} alt="" className="h-16" />
@@ -60,6 +61,7 @@ const Footer = () => {
             </div>
           </nav>
         </footer>
+      </div>
       );
 };
 

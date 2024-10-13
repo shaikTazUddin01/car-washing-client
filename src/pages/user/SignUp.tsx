@@ -28,7 +28,7 @@ const navigate=useNavigate()
      
       console.log(data);
       const res=await userSignup(data) as TResponse<any>
-      // console.log(res);
+      console.log(res);
       if (res?.data) {
         toast.success("Sign Up  success", {
           id: toastId,
@@ -69,6 +69,7 @@ const navigate=useNavigate()
           <THInput name="name" type="text" label="Name"></THInput>
           
           <THInput name="email" type="email" label="Email"></THInput>
+          <THInput name="image" type="text" label="Image Url"></THInput>
           <THInput
             name="phone"
             type="text"

@@ -12,7 +12,7 @@ const HeroSection = () => {
       className=" bg-cover bg-center "
       style={{ backgroundImage: `url(${banner})` }}
     >
-      <div className="px-10 pb-32 pt-40">
+      <div className="px-10 pb-32 pt-40 max-w-[1440px] mx-auto">
         {/* first part */}
         <div className="flex text-white items-center gap-5 md:gap-10 justify-center lg:justify-normal">
           <h1 className="text-[30px] md:text-[80px] lg:text-[105px] font-unbounded font-semibold  relative flex items-center gap-2">

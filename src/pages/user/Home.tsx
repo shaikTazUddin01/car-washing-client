@@ -19,9 +19,9 @@ const Home = () => {
       {/* hero section */}
       <HeroSection />
       {/* home content */}
-      <div className="px-5">
+      <div className=" ">
         {/* feature services */}
-        <div data-aos="fade-up" data-aos-duration="500" data-aos-offset="100">
+        <div data-aos="fade-up" data-aos-duration="500" data-aos-offset="100" className="max-w-[1440px] mx-auto px-5">
         <FeatureService />
         </div>
         {/* diff section */}
