@@ -1,5 +1,4 @@
-# <center>Assignment - 05</center>
- **Project Name : Car Washing Booking System** <br>
+## Project Name : Car Washing Booking System
 
  **Live Link(front end) : [https://carwashing-service.netlify.app](https://carwashing-service.netlify.app)** 
 
