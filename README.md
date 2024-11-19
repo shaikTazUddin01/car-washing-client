@@ -1,4 +1,4 @@
-## Project Name : Car Washing Booking System
+## Project Name : Online Booking System
 
  **Live Link(front end) : [https://carwashing-service.netlify.app](https://carwashing-service.netlify.app)** 
 
